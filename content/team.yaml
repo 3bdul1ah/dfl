@@ -2,49 +2,103 @@
 # Only member name is required. Optional: id, initials, role, badge, bio, image, links.
 label: Our Team
 title: Research Team
+
+# -------------
+
 teams:
   aric:
     name: Khalifa University (ARIC)
     members:
       - id: prof-yahya-zweiri
         name: Prof. Yahya Zweiri
+        image:
+          path: assets/images/Prof. yahya zweiri.jpg
+          alt: Prof. Yahya Zweiri
         initials: YZ
         role: Principal Investigator · Khalifa University
         badge: PI
+
+      # -------------
+
       - id: prof-merouane-debbah
         name: Prof. Merouane Debbah
+        image:
+          path: assets/images/Prof. Merouane Debbah.jpg
+          alt: Prof. Merouane Debbah
         initials: MD
         role: Co-Investigator · Khalifa University
         badge: Co-I
+
+      # -------------
+
       - id: hussain-sajwani
         name: Hussain Sajwani
+        image:
+          path: assets/images/Hussain Sajwani.jpeg
+          alt: Hussain Sajwani
         initials: HS
         role: Researcher · Khalifa University
+
+      # -------------
+
       - id: abdulla-ayyad
         name: Abdulla Ayyad
+        image:
+          path: assets/images/Abdulla Ayyad.jpeg
+          alt: Abdulla Ayyad
         initials: AA
         role: Researcher · Khalifa University
+
+      # -------------
+
       - id: xiaoqian-huang
         name: Xiaoqian Huang
+        image:
+          path: assets/images/Xiaoqian Huang.png
+          alt: Xiaoqian Huang
         initials: XH
         role: Researcher · Khalifa University
+
+      # -------------
+
       - id: abdullah-alshateri
         name: Abdullah Alshateri
+        image:
+          path: assets/images/Abdullah Alshateri.jpeg
+          alt: Abdullah Alshateri
         initials: AA
         role: Researcher · Khalifa University
+
+  # -------------
+
   dfl:
     name: Dubai Future Foundation
     members:
       - id: dr-tarek-taha
         name: Dr. Tarek Taha
+        image:
+          path: assets/images/Dr. Tarek Taha.jpg
+          alt: Dr. Tarek Taha
         initials: TT
         role: Principal Investigator · Dubai Future Foundation
         badge: PI
+
+      # -------------
+
       - id: dr-rajkumar-muthasasmy
         name: Dr. Rajkumar Muthasasmy
+        image:
+          path: assets/images/Dr. Rajkumar Muthasasmy.jpeg
+          alt: Dr. Rajkumar Muthasasmy
         initials: RM
         role: Researcher · Dubai Future Foundation
+
+      # -------------
+
       - id: qasim-kapasi
         name: Qasim Kapasi
+        image:
+          path: assets/images/Qasim Kapasi.jpeg
+          alt: Qasim Kapasi
         initials: QK
         role: Project Manager · Dubai Future Foundation

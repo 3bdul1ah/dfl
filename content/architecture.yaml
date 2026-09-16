@@ -1,27 +1,45 @@
 label: System Architecture
 title: How It Works
+
+# -------------
+
 image:
   path: assets/images/architecture.jpg
   alt: System Architecture Diagram
+
+# -------------
+
 steps:
   - id: step-1
     title: User Prompt
     description: Operator issues a natural-language task (e.g., "Sort all luggage in Hall A").
+
+  # -------------
+
   - id: step-2
     title: MLLM Reasoning
     description:
       The MLLM processes robot metadata, sensory data (LiDAR, RGB-D, IMU), task parameters, and
       environment state.
+
+  # -------------
+
   - id: step-3
     title: Symbolic Plan Generation
     description:
       Generates a high-level plan decomposed into step-by-step sub-tasks and selects the appropriate
       tools.
+
+  # -------------
+
   - id: step-4
     title: Execution & Feedback
     description:
       The Execution Manager carries out actions, records robot states, and feeds results back
       into the loop.
+
+  # -------------
+
   - id: step-5
     title: States Memory
     description:

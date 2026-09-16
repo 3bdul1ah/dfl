@@ -59,11 +59,10 @@ test("configuration collections render through App, including empty and long-con
         `${count} name-only members in an additional YAML group render automatically`,
         () => {
           const next = structuredClone(content);
-          next.team = schemas.team(
+          const additionalTeams = schemas.team(
             {
-              ...next.team,
+              title: next.team.title,
               teams: {
-                ...next.team.teams,
                 "new-lab": {
                   name: "New Lab",
                   members: Array.from({ length: count }, (_, index) => ({
@@ -78,6 +77,9 @@ test("configuration collections render through App, including empty and long-con
             },
             "team",
           );
+          // Existing content already has compiled media URLs and dimensions.
+          // Validate new YAML entries before merging them into compiled content.
+          Object.assign(next.team.teams, additionalTeams.teams);
           const html = render(next);
           assert(html.includes('id="team-new-lab"'));
           assert(!html.includes("Empty group"));

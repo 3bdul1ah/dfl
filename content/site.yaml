@@ -1,13 +1,31 @@
 # Leave url/repository null to derive them from GitHub Pages during deployment.
 # Paragraphs and brand/title text support **bold emphasis**, not raw HTML.
 name: AI Powered Airport Automation
+
+# -------------
+
 brand: AI **Airport** Automation
+
+# -------------
+
 description:
   A joint initiative by Khalifa University and Dubai Future Foundation to develop intelligent
   robotic systems that automate airport operations using large language models and symbolic planning.
+
+# -------------
+
 language: en
+
+# -------------
+
 url: null
+
+# -------------
+
 repository: null
+
+# -------------
+
 seo:
   title: AI Powered Airport Automation
   description:
@@ -16,24 +34,51 @@ seo:
   image:
     path: assets/images/architecture.jpg
     alt: System Architecture Diagram
+
+# -------------
+
 favicon:
   path: assets/images/robot.svg
   alt: Robot
+
+# -------------
+
 navigation:
   - label: About
     href: "#about"
+
+  # -------------
+
   - label: Platform
     href: "#platform"
+
+  # -------------
+
   - label: Architecture
     href: "#architecture"
+
+  # -------------
+
   - label: Simulation
     href: "#simulation"
+
+  # -------------
+
   - label: Experiments
     href: "#experiments"
+
+  # -------------
+
   - label: Team
     href: "#team"
+
+  # -------------
+
   - label: Contact
     href: "#contact"
+
+# -------------
+
 hero:
   tagline: KU & DFF Collaboration
   title:
@@ -47,10 +92,16 @@ hero:
       path: assets/images/ku-full.png
       alt: Khalifa University
       framed: false
+
+    # -------------
+
     - id: dff
       path: assets/images/DFL-full.webp
       alt: Dubai Future Foundation
       framed: false
+
+    # -------------
+
     - id: aric
       path: assets/images/ARIC logo.png
       alt: ARIC
@@ -59,21 +110,36 @@ hero:
     - label: Explore Project
       href: "#about"
       variant: primary
+
+    # -------------
+
     - label: Watch Videos
       href: "#experiments"
       variant: outline
   badge:
     path: assets/images/Made-in-the-Emirates.jpg
     alt: Made in the Emirates
+
+# -------------
+
 socials: []
+
+# -------------
+
 footer:
   sourceLabel: Source
   year: 2026
   links:
     - label: Khalifa University
       href: https://www.ku.ac.ae
+
+    # -------------
+
     - label: Dubai Future Foundation
       href: https://www.dubaifuture.ae
+
+# -------------
+
 accessibility:
   skipLink: Skip to content
   navigationLabel: Main navigation

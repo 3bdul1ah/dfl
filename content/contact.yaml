@@ -1,8 +1,14 @@
 label: Get in Touch
 title: Interested in Collaboration?
+
+# -------------
+
 paragraphs:
   - We welcome partnerships, academic collaboration, and industry engagement. Reach out to the principal
     investigator to learn more about the project.
+
+# -------------
+
 links:
   - label: ✉ yahya.zweiri@ku.ac.ae
     href: mailto:yahya.zweiri@ku.ac.ae

@@ -1,5 +1,8 @@
 label: About the Project
 title: Intelligent Robotics for Modern Airports
+
+# -------------
+
 paragraphs:
   - This project, hosted at the **Advanced Research and Innovation Center (ARIC)** within Khalifa University,
     aims to fully automate common airport operations including luggage handling from check-in, conveyor
@@ -9,22 +12,40 @@ paragraphs:
     state, then generates and executes high-level symbolic plans to accomplish complex airport tasks autonomously.
   - The robot platform is proudly developed and manufactured in the United Arab Emirates, reflecting the
     UAE's vision for local innovation and advanced technology development.
+
+# -------------
+
 features:
   - id: luggage-handling
     title: Luggage Handling
     description: Automated sorting, transport, and management of luggage across check-in and belts.
+
+  # -------------
+
   - id: multimodal-llm
     title: Multimodal LLM
     description: GPT-4, LLaMA, Qwen and other frontier models driving autonomous decision-making.
+
+  # -------------
+
   - id: symbolic-planning
     title: Symbolic Planning
     description: High-level task decomposition into executable robot action sequences.
+
+  # -------------
+
   - id: tool-pool
     title: Tool Pool
     description: Rich library of perception, manipulation, and navigation capabilities for robots.
+
+  # -------------
+
   - id: safety-monitoring
     title: Safety Monitoring
     description: Continuous LiDAR-based safety checks and speed limits around humans.
+
+  # -------------
+
   - id: simulation
     title: Simulation
     description: NVIDIA Isaac Sim-based testing before real-world airport deployment.
