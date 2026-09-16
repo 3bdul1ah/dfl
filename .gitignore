@@ -1,1 +1,5 @@
 archive/*.zip
+node_modules/
+dist/
+public/assets/
+src/generated/

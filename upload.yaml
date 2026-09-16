@@ -1,0 +1,57 @@
+# Files are relative to the repository root. Only listed media is published.
+# Add experiment entries to create cards automatically on the next build.
+images:
+  ku:
+    path: assets/images/ku-full.png
+    alt: Khalifa University
+  dff:
+    path: assets/images/DFL-full.webp
+    alt: Dubai Future Foundation
+  aric:
+    path: assets/images/ARIC logo.png
+    alt: ARIC
+  madeInEmirates:
+    path: assets/images/Made-in-the-Emirates.jpg
+    alt: Made in the Emirates
+  architecture:
+    path: assets/images/architecture.jpg
+    alt: System Architecture Diagram
+simulation:
+  video:
+    path: assets/videos/isaac sim simulation.mp4
+experiments:
+  - id: navigation
+    title: Autonomous Navigation
+    description:
+      The Picker 2.0 platform navigating autonomously through a structured environment. The robot
+      builds and maintains an occupancy map in real time, plans collision-free paths, and localizes itself
+      using onboard LiDAR and odometry — a prerequisite for any airport deployment scenario.
+    video:
+      path: assets/videos/Navigation_Experiment.MOV
+      types:
+        - video/quicktime
+        - video/mp4
+  - id: grasping-pick-place
+    title: Grasping Experiment — Pick & Place
+    description:
+      Demonstration of the robot's ability to detect, localize, and grasp target objects using
+      6-DoF pose estimation. The manipulation pipeline integrates visual perception with optimal grasp planning
+      to reliably pick luggage-type objects from unstructured surfaces.
+    video:
+      path: assets/videos/Grasping_Experiment_1.MP4
+  - id: grasping-varied-objects
+    title: Grasping Experiment — Varied Objects
+    description:
+      Testing grasp success across objects of varying size, shape, and weight. The system adapts
+      grasp strategies using tactile slip estimation and control to ensure secure object handling throughout
+      the manipulation sequence.
+    video:
+      path: assets/videos/Grasping_Experiment_2.MP4
+  - id: grasping-placement
+    title: Grasping Experiment — Placement Precision
+    description:
+      Evaluating precise placement of grasped objects into designated target locations (e.g.,
+      conveyor slots, carts). The robot uses visual confirmation and feedback from the Execution Manager
+      to validate successful task completion and update the environment state.
+    video:
+      path: assets/videos/Grasping_Experiment_3.MP4
