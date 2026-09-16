@@ -13,6 +13,7 @@ projects.yaml
 simulation.yaml
 site.yaml
 team.yaml
+README.md           Editing and setup guide
 assets/             Images and videos
 website/            Code, documentation and build tooling
 .github/workflows/  GitHub Pages deployment (must stay here)
@@ -67,7 +68,7 @@ are required. Save: a new card appears and the grid adjusts. Projects work the
 same way under `projects` in `projects.yaml`.
 
 For descriptions, images, tags, status and links, see the
-[available fields](docs/content.md#experiments-and-projects).
+[available fields](website/docs/content.md#experiments-and-projects).
 
 ## Add a team member or group
 
@@ -80,7 +81,7 @@ Open `team.yaml`:
 
 To add a group, add a unique key under `teams` with a `name` and a `members`
 list. Fill that list the same way. Empty groups stay hidden. See the
-[team examples and fields](docs/content.md#team-groups-and-members).
+[team examples and fields](website/docs/content.md#team-groups-and-members).
 
 ## Replace an image, video or icon
 
@@ -120,8 +121,8 @@ npm run preview   # Preview the production build
 Do not edit generated files in `website/dist/`, `website/public/assets/` or `website/src/generated/`.
 Content validation lives in `website/src/lib/content/`; build scripts live in `website/scripts/`.
 
-[All content fields and troubleshooting](docs/content.md) ·
-[Contributing](CONTRIBUTING.md)
+[All content fields and troubleshooting](website/docs/content.md) ·
+[Contributing](website/CONTRIBUTING.md)
 
 Original project: [Advanced Research and Innovation Center](https://github.com/AdvancedResearchInnovationCenter/dfl).
 No license was present in the original repository; this refactor does not grant
