@@ -17,8 +17,8 @@ seo:
     path: assets/images/architecture.jpg
     alt: System Architecture Diagram
 favicon:
-  path: assets/images/ARIC logo.png
-  alt: ARIC
+  path: assets/images/robot.svg
+  alt: Robot
 navigation:
   - label: About
     href: "#about"

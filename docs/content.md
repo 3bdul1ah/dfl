@@ -96,7 +96,7 @@ editing scaffold does not publish a fictional team or an empty container:
 title: Research Team
 teams:
   aric:
-    name: Khalifa University — ARIC
+    name: Khalifa University (ARIC)
     members: []
   dfl:
     name: Dubai Future Foundation

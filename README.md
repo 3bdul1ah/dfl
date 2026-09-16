@@ -1,166 +1,109 @@
 # Research project website
 
-A content-driven research website built with React, Vite and plain CSS. It
-prerenders to static HTML and publishes its images and videos with the site.
-Content, identity and collections live in YAML; adding a card or a team does
-not require editing React.
+React, Vite and YAML. Edit content files, save, and the website updates.
 
-The included content documents the AI Powered Airport Automation collaboration.
-It is real project content, not a collection of fictional template examples.
-Replace it with your own information when customizing a fork.
+## Find what to edit
 
-## Quick start
+| Change                                                        | File                                  |
+| ------------------------------------------------------------- | ------------------------------------- |
+| Site name, hero, logos, navigation, SEO, social links, footer | `content/site.yaml`                   |
+| Browser tab icon                                              | `favicon.path` in `content/site.yaml` |
+| About text and feature cards                                  | `content/about.yaml`                  |
+| Robot platform and specifications                             | `content/platform.yaml`               |
+| Architecture diagram and steps                                | `content/architecture.yaml`           |
+| Simulation text and video                                     | `content/simulation.yaml`             |
+| Experiment cards                                              | `content/experiments.yaml`            |
+| ARIC, DFL and other teams                                     | `content/team.yaml`                   |
+| Project cards                                                 | `content/projects.yaml`               |
+| Contact details                                               | `content/contact.yaml`                |
+| Colors, spacing and responsive layout                         | `src/styles.css`                      |
+| Section layouts and reusable cards                            | `src/components/`                     |
 
-Prerequisites: Node.js **22.12 or newer**, npm, and Git LFS for the included videos.
+## Run locally
+
+Install Node.js **22.12 or newer**, npm and Git LFS. Clone your fork, open its
+folder, then run:
 
 ```sh
-git clone <your-repository-url>
-cd <your-repository-directory>
 git lfs install
 git lfs pull
 npm ci
 npm run dev
 ```
 
-Open the URL printed by Vite, normally `http://127.0.0.1:5173/`. YAML and media
-changes reload the development page automatically. Invalid content produces an
-error with the file/field to fix; it is never silently published. Fix the file
-and save again to recover. Component and CSS edits also update automatically.
+Open the URL printed in the terminal. Save YAML or asset changes to reload the
+page automatically. If validation fails, fix the file and field shown in the error.
 
-## Content files
+## Add an experiment or project
 
-| File                        | Controls                                                             |
-| --------------------------- | -------------------------------------------------------------------- |
-| `content/site.yaml`         | Identity, hero, logos, navigation, metadata, social links and footer |
-| `content/about.yaml`        | About paragraphs and repeating feature cards                         |
-| `content/platform.yaml`     | Platform description, image and specifications                       |
-| `content/architecture.yaml` | Architecture image and ordered steps                                 |
-| `content/simulation.yaml`   | Simulation description, video and tags                               |
-| `content/experiments.yaml`  | Experiment cards                                                     |
-| `content/team.yaml`         | Independent ARIC, DFL and any additional team groups                 |
-| `content/projects.yaml`     | Optional project cards; initially empty                              |
-| `content/contact.yaml`      | Contact text and links                                               |
+Append an item under `experiments` in `content/experiments.yaml`:
 
-`upload.yaml` has been replaced by these section files. Put each asset path
-beside the content that uses it. There is no duplicate upload manifest to maintain.
-See [the content guide](docs/content.md) for schemas, examples and validation rules.
+```yaml
+- id: mapping
+  title: Mapping Experiment
+  video:
+    path: assets/videos/Mapping_Experiment.MP4
+```
 
-### Add an experiment
+Use a unique `id` and the actual title and media path. Only `id` and `title`
+are required. Save: a new card appears and the grid adjusts. Projects work the
+same way under `projects` in `content/projects.yaml`.
 
-1. Put the recording or image under `assets/`, if the entry needs media.
-2. Open `content/experiments.yaml`.
-3. Append an entry to `experiments` with a unique `id` and a `title`.
-4. Save. The new card appears and the grid adjusts automatically.
+For descriptions, images, tags, status and links, see the
+[available fields](docs/content.md#experiments-and-projects).
 
-Descriptions, images, videos, status, tags and links are optional. You can add
-one item or many; the component does not need to change. Projects work the same
-way in `content/projects.yaml`. An empty collection hides its section and any
-navigation link pointing to it.
+## Add a team member or group
 
-### Edit teams
+Open `content/team.yaml`:
 
-Open `content/team.yaml` and add a member under the appropriate group's `members`
-list. Only `name` is required; supply an explicit `id` if the name could change
-or two members have the same name. Roles, biographies, portraits and links are
-optional.
+1. Find the group under `teams`, such as `aric` or `dfl`.
+2. Add an entry under its `members` list with the person's `name`.
+3. Add `id`, `role`, `bio`, `image` or `links` if needed.
+4. Save. The member appears automatically.
 
-To add another group, add another key under `teams` with a `name` and `members`.
-Groups render in file order. Empty groups do not create empty containers.
-ARIC and DFL are data entries, not hardcoded component branches.
+To add a group, add a unique key under `teams` with a `name` and a `members`
+list. Fill that list the same way. Empty groups stay hidden. See the
+[team examples and fields](docs/content.md#team-groups-and-members).
 
-### Customize identity and assets
+## Replace an image, video or icon
 
-Edit `site.yaml` for the brand, hero title, description, logos, SEO, navigation,
-footer and social links; edit `contact.yaml` for contact details. Historical
-project affiliations and team member information live only in content files.
+1. Put the file in `assets/images/` or `assets/videos/`.
+2. Set its `path` in the relevant YAML file, including the `assets/` prefix.
+3. Add descriptive `alt` text for images.
+4. Save and commit both the asset and YAML.
 
-Use paths such as `assets/images/architecture.jpg` or
-`assets/videos/Mapping_Experiment.MP4`. Paths are case-sensitive and may contain
-spaces. Add meaningful `alt` text to images; team and experiment images can use
-the person's name or card title as a fallback. The build reads intrinsic image
-dimensions to reserve space. Omit an optional image entirely for an image-less
-card, or remove a portrait to use initials.
+Paths are case-sensitive. The browser tab icon uses `assets/images/robot.svg`.
+Only referenced assets are included in the build. Videos use Git LFS.
+No `upload.yaml` or GitHub Release is needed.
 
-Only referenced assets are deployed. They receive content-hashed URLs so
-replacements are not hidden behind stale browser caches. Video files are copied
-without transcoding. Keep them browser-compatible. Existing Git LFS rules cover
-MP4/MOV; add rules for additional large video formats if you start using them.
-GitHub Releases are not involved in publishing.
+## Customize and deploy a fork
 
-## Checks and production preview
+1. Edit `content/site.yaml` for your identity, social links and metadata.
+2. Edit the other content files for your project and team.
+3. Leave `url` and `repository` null to detect your GitHub Pages address automatically.
+4. In your fork, open **Settings → Pages → Source → GitHub Actions**.
+5. Enable Actions, then push to your default branch.
+
+The workflow checks, builds and deploys your fork. Content and assets publish
+with each successful build. Check the **Actions** tab for progress or errors.
+
+For another static host, set `url` in `content/site.yaml`, run `npm run build`,
+and upload `dist/`. Include any subdirectory in that URL.
+
+## Check changes
 
 ```sh
-npm run lint
-npm run format:check
-npm run content:check
-npm test
-npm run build
-npm run preview
+npm run format    # Format files
+npm run check     # Lint, formatting, content validation, tests and build
+npm run preview   # Preview the production build
 ```
 
-`npm run check` runs all checks and the production build. `npm run format` applies
-Prettier. This is a JavaScript project: YAML has runtime schemas and tests rather
-than a TypeScript typecheck script. ESLint checks JavaScript and JSX.
+Do not edit generated files in `dist/`, `public/assets/` or `src/generated/`.
+Content validation lives in `src/lib/content/`; build scripts live in `scripts/`.
 
-The production build prerenders the page, preserving content, section links,
-mobile navigation and native video controls without JavaScript. React hydrates
-it to enhance menu focus behavior. Generated files under `dist/`,
-`public/assets/` and `src/generated/` are ignored by Git.
+[All content fields and troubleshooting](docs/content.md) ·
+[Contributing](CONTRIBUTING.md)
 
-## Deploy your own fork
-
-1. Fork this repository and customize `content/`.
-2. In **your repository** choose **Settings → Pages → Source → GitHub Actions**.
-3. Enable Actions in your fork if GitHub has disabled them.
-4. Push to your repository's default branch, or run **Check and deploy website**
-   from the Actions tab on that branch.
-
-The workflow tests and builds branches and pull requests, but publishes only
-from the repository's default branch. It uses the current repository's Pages
-URL; there is no original-owner allowlist, hardcoded `/dfl/` base, or upstream
-push. Your repository's normal branch/environment protection rules still apply.
-A custom domain configured in Pages is picked up by the same workflow.
-
-Leave `site.url` and `site.repository` null for automatic GitHub detection.
-For other static hosts, set `url` to your complete public site URL (including
-any subdirectory), then upload `dist/`. You can also set `SITE_URL` and
-`SITE_BASE` when building. The base must start and end with `/`.
-
-```sh
-SITE_URL=https://research.example.org/work/ npm run build
-npm run preview
-```
-
-Visit `/work/` on the preview server in this example. Local development defaults
-to `/` when no deployment URL is configured. Changing the base in YAML restarts
-Vite automatically; use its updated URL. Changing a custom domain in YAML does
-not configure DNS or GitHub settings for you.
-
-GitHub Pages has a 1 GB published-site limit and a 100 GB/month soft bandwidth
-limit. The pipeline limits referenced media to 950 MB and checks the complete
-build. Large or heavily watched video libraries may eventually need a media
-host. The site does not transcode video or generate responsive image variants.
-
-## Project structure
-
-```text
-content/                  Editable YAML content
-assets/                   Original images and Git LFS recordings
-src/components/           Page sections, collection cards and shared presentation
-src/lib/content/          YAML schemas, asset processing and deployment metadata
-src/lib/sections.js        Visibility rules shared by page and navigation
-scripts/content-plugin.mjs Vite integration and live YAML reload
-scripts/prerender.mjs      Static HTML generation
-src/styles.css            Shared tokens, responsive layout and interactions
-tests/                    Content, asset and rendering acceptance tests
-.github/workflows/        Repository-aware checks and Pages deployment
-```
-
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and
-[the content guide](docs/content.md) for all supported fields.
-
-Original project attribution:
-[Advanced Research and Innovation Center](https://github.com/AdvancedResearchInnovationCenter/dfl).
+Original project: [Advanced Research and Innovation Center](https://github.com/AdvancedResearchInnovationCenter/dfl).
 No license was present in the original repository; this refactor does not grant
-new rights to its source, branding or media. Confirm reuse rights before
-redistributing them.
+new rights to its source, branding or media.

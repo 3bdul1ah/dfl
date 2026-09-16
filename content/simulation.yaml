@@ -5,8 +5,8 @@ paragraphs:
     a high-fidelity airport scenario within **NVIDIA Isaac Sim**. The environment faithfully replicates
     key airport operational areas including baggage claim halls, check-in counters, conveyor belts, and
     UMD zones.
-  - The simulation enables full end-to-end testing of the MLLM-driven pipeline — from natural language task
-    input through symbolic plan generation to robot execution — under diverse conditions and edge cases
+  - The simulation enables full end-to-end testing of the MLLM-driven pipeline, from natural language task
+    input through symbolic plan generation to robot execution, under diverse conditions and edge cases
     that would be difficult or unsafe to test in a live airport environment.
 video:
   path: assets/videos/isaac sim simulation.mp4

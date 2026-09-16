@@ -3,6 +3,8 @@
 Keep content changes in `content/`, presentation in `src/components/` and
 `src/styles.css`, and build-time parsing in `src/lib/content/`. Preserve the
 project's factual wording unless a content correction is intentional.
+Write direct sentences. Avoid em dashes and en dashes in website copy; use
+commas, colons or periods instead.
 
 1. Create a branch in your own repository.
 2. Install with `npm ci`; fetch media with `git lfs pull`.
@@ -15,8 +17,8 @@ Test at least a minimal item, omitted optional fields, long text, multiple items
 and an empty collection. New YAML fields must be wired to a renderer or build
 behavior and documented in `docs/content.md`.
 
-For visual changes, check narrow (320–430px), tablet (768px), laptop (1024px),
-and wide (1440–1920px) layouts. Resize between them. Check overflow, keyboard
+For visual changes, check narrow (320 to 430px), tablet (768px), laptop (1024px),
+and wide (1440 to 1920px) layouts. Resize between them. Check overflow, keyboard
 focus, the mobile menu (including Escape), and reduced motion. Keep essential
 content and native controls available before hydration.
 
