@@ -1,7 +1,10 @@
 # Content guide
 
+The editable YAML files live directly at the repository root. Code and assets
+live in `website/`. Run npm commands from `website/`.
+
 All content is parsed and validated at development startup and before a build.
-The schema definitions are in `src/lib/content/schemas.mjs`. Unknown fields,
+The schema definitions are in `website/src/lib/content/schemas.mjs`. Unknown fields,
 wrong types, duplicate IDs, malformed YAML and unsafe URLs produce errors that
 identify the file and field. YAML mapping keys must also be unique.
 
@@ -19,7 +22,7 @@ identify the file and field. YAML mapping keys must also be unique.
 - IDs use lowercase letters, numbers and hyphens and must be unique within their
   collection. Team keys use the same convention.
 - Image objects contain `path` and optional `alt`. Asset paths are relative to
-  the repository root, start with `assets/`, and must stay inside that directory.
+  the repository root, start with `website/assets/`, and must stay inside that directory.
   Missing configured files fail a build; omitted optional images render normally.
 - Supported images: PNG, JPEG, WebP, SVG, GIF and AVIF. Supported videos: MP4,
   M4V, MOV, WebM and OGV. This is file support, not a guarantee that every codec
@@ -40,7 +43,7 @@ experiments:
     title: Mapping Experiment
     description: Describe what this recording demonstrates.
     video:
-      path: assets/videos/Mapping_Experiment.MP4
+      path: website/assets/videos/Mapping_Experiment.MP4
     tags:
       - Mapping
     links:
@@ -71,13 +74,13 @@ have a navigation link. No collection is limited to a fixed number of entries.
 
 ```yaml
 video:
-  path: assets/videos/Navigation_Experiment.MOV
+  path: website/assets/videos/Navigation_Experiment.MOV
   types:
     - video/quicktime
     - video/mp4
   aspectRatio: 16 / 9
   # poster:
-  #   path: assets/images/preview.jpg
+  #   path: website/assets/images/preview.jpg
   #   alt: Describe the preview.
 ```
 
@@ -170,7 +173,7 @@ neither. Add a new semantic section only when there is real content for it.
 - **Unknown field:** check spelling against this guide. Content is not silently
   ignored when a field is misspelled.
 - **Duplicate ID:** choose a stable, distinct ID; order is controlled by the list.
-- **File not found:** check case, spaces and the `assets/` prefix. Commit the media
+- **File not found:** check case, spaces and the `website/assets/` prefix. Commit the media
   along with the YAML, including the Git LFS upload during push.
 - **Broken optional image:** omit the field if no image exists. A configured
   nonexistent asset is a build error, not a placeholder published to visitors.

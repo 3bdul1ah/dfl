@@ -1,13 +1,14 @@
 # Contributing
 
-Keep content changes in `content/`, presentation in `src/components/` and
-`src/styles.css`, and build-time parsing in `src/lib/content/`. Preserve the
+Keep content changes in the root YAML files, presentation in
+`website/src/components/` and `website/src/styles.css`, and build-time parsing in
+`website/src/lib/content/`. Preserve the
 project's factual wording unless a content correction is intentional.
 Write direct sentences. Avoid em dashes and en dashes in website copy; use
 commas, colons or periods instead.
 
 1. Create a branch in your own repository.
-2. Install with `npm ci`; fetch media with `git lfs pull`.
+2. Fetch media with `git lfs pull`, then run `cd website` and `npm ci`.
 3. Develop with `npm run dev`.
 4. Run `npm run format` and `npm run check` before opening a pull request.
 5. Explain the behavior change and relevant verification in the pull request.
@@ -15,7 +16,7 @@ commas, colons or periods instead.
 For content system changes, extend the rendering tests as well as schema tests.
 Test at least a minimal item, omitted optional fields, long text, multiple items
 and an empty collection. New YAML fields must be wired to a renderer or build
-behavior and documented in `docs/content.md`.
+behavior and documented in `website/docs/content.md`.
 
 For visual changes, check narrow (320 to 430px), tablet (768px), laptop (1024px),
 and wide (1440 to 1920px) layouts. Resize between them. Check overflow, keyboard

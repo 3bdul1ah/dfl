@@ -1,5 +1,6 @@
 import path from "node:path";
 import { compileContent } from "../src/lib/content/load.mjs";
+import { schemas } from "../src/lib/content/schemas.mjs";
 import { applyMetadata } from "../src/lib/content/metadata.mjs";
 
 export function contentPlugin(initialContent) {
@@ -12,19 +13,23 @@ export function contentPlugin(initialContent) {
     configureServer(server) {
       if (server.config.server.watch === null) return;
       const root = server.config.root;
-      const roots = ["content", "assets"].map(
-        (directory) => path.join(root, directory) + path.sep,
+      const repositoryRoot = path.dirname(root);
+      const contentFiles = new Set(
+        Object.keys(schemas).map((name) =>
+          path.join(repositoryRoot, `${name}.yaml`),
+        ),
       );
-      server.watcher.add(roots);
+      const assetsRoot = path.join(root, "assets") + path.sep;
+      server.watcher.add([...contentFiles, assetsRoot]);
       let timer;
       let queue = Promise.resolve();
       const update = (file) => {
-        if (!roots.some((directory) => file.startsWith(directory))) return;
+        if (!contentFiles.has(file) && !file.startsWith(assetsRoot)) return;
         clearTimeout(timer);
         timer = setTimeout(() => {
           queue = queue.then(async () => {
             try {
-              const result = await compileContent({ root });
+              const result = await compileContent({ root: repositoryRoot });
               if (result.content.site.base !== content.site.base) {
                 await server.restart();
                 return;

@@ -6,11 +6,13 @@ import { schemas } from "./schemas.mjs";
 import { deployment } from "./deployment.mjs";
 import { resolveAssets } from "./assets.mjs";
 
-export const projectRoot = fileURLToPath(new URL("../../../", import.meta.url));
+export const projectRoot = fileURLToPath(
+  new URL("../../../../", import.meta.url),
+);
 export async function readContent(root = projectRoot) {
   const content = {};
   for (const [name, validate] of Object.entries(schemas)) {
-    const file = `content/${name}.yaml`;
+    const file = `${name}.yaml`;
     let source;
     try {
       source = await readFile(path.join(root, file), "utf8");
@@ -22,9 +24,7 @@ export async function readContent(root = projectRoot) {
     content[name] = validate(doc.toJS({ maxAliasCount: 50 }), file);
   }
   if (!content.site.hero.title.length)
-    throw new Error(
-      "content/site.yaml.hero.title: supply at least one title line",
-    );
+    throw new Error("site.yaml.hero.title: supply at least one title line");
   const sectionIds = new Set([
     "hero",
     ...Object.keys(content).filter((key) => key !== "site"),
@@ -53,9 +53,9 @@ export async function compileContent({
   content.site = { ...content.site, ...resolvedDeployment };
   const result = await resolveAssets(content, root, { write });
   if (write) {
-    await mkdir(path.join(root, "src/generated"), { recursive: true });
+    await mkdir(path.join(root, "website/src/generated"), { recursive: true });
     await writeFile(
-      path.join(root, "src/generated/content.json"),
+      path.join(root, "website/src/generated/content.json"),
       JSON.stringify(result.content, null, 2) + "\n",
     );
   }

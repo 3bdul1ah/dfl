@@ -13,7 +13,7 @@ test("experiments accept omitted optional fields and reject malformed entries", 
   const parse = (experiments) =>
     schemas.experiments(
       { title: "Experiments", experiments },
-      "content/experiments.yaml",
+      "experiments.yaml",
     );
   assert.deepEqual(parse([entry]).experiments[0].links, []);
   assert.throws(() => parse([entry, entry]), /duplicate id/);
@@ -50,7 +50,7 @@ test("team groups accept name-only members and have unique stable identities", (
         empty: { name: "Empty" },
       },
     },
-    "content/team.yaml",
+    "team.yaml",
   );
   assert.equal(parsed.teams["new-lab"].members[0].id, "research-collaborator");
   assert.deepEqual(parsed.teams.empty.members, []);
@@ -76,12 +76,9 @@ test("team groups accept name-only members and have unique stable identities", (
 });
 test("malformed YAML and duplicate YAML mapping keys report the file", async (t) => {
   const { root } = await contentFixture(t);
-  await writeFile(path.join(root, "content/about.yaml"), "title: [");
-  await assert.rejects(readContent(root), /content\/about.yaml/);
-  await writeFile(
-    path.join(root, "content/about.yaml"),
-    "title: One\ntitle: Two\n",
-  );
+  await writeFile(path.join(root, "about.yaml"), "title: [");
+  await assert.rejects(readContent(root), /about.yaml/);
+  await writeFile(path.join(root, "about.yaml"), "title: One\ntitle: Two\n");
   await assert.rejects(readContent(root), /Map keys must be unique/);
 });
 test("unknown section links are caught before deployment", async (t) => {
