@@ -30,6 +30,9 @@ teams:
 
       - id: abhinav-pathak
         name: Abhinav Pathak
+        image:
+          path: assets/images/Abhinav Pathak.jpeg
+          alt: Abhinav Pathak
         initials: AP
         role: Manipulation Engineer · Dubai Future Foundation
 
