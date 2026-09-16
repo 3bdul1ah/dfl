@@ -1,4 +1,4 @@
-import { SectionHeader } from "./Content.jsx";
+import { SectionHeader, Paragraphs } from "./Content.jsx";
 import { ImageAsset } from "./Media.jsx";
 export default function Architecture({ data }) {
   return (
@@ -12,6 +12,9 @@ export default function Architecture({ data }) {
       >
         <div className="arch-description">
           <SectionHeader id="architecture" {...data} />
+          <div className="section-intro">
+            <Paragraphs paragraphs={data.paragraphs} />
+          </div>
           {data.steps.length > 0 && (
             <ol className="arch-steps">
               {data.steps.map((step, index) => (
@@ -20,12 +23,23 @@ export default function Architecture({ data }) {
                     {index + 1}
                   </span>
                   <div className="step-text">
+                    {step.layer && <p className="step-layer">{step.layer}</p>}
                     <h3>{step.title}</h3>
                     <p>{step.description}</p>
                   </div>
                 </li>
               ))}
             </ol>
+          )}
+          {data.principles.length > 0 && (
+            <div className="detail-grid">
+              {data.principles.map((principle) => (
+                <div className="detail-item" key={principle.id}>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.description}</p>
+                </div>
+              ))}
+            </div>
           )}
         </div>
         {data.image && (

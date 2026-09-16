@@ -1,16 +1,15 @@
-# Leave url/repository null to derive them from GitHub Pages during deployment.
-# Paragraphs and brand/title text support **bold emphasis**, not raw HTML.
-name: AI Powered Airport Automation
+# Leave url/repository null to derive them from this fork during deployment.
+name: Towards Fully Autonomous Airport Luggage Handling
 
 # -------------
 
-brand: AI **Airport** Automation
+brand: AI-Powered **Luggage Handling**
 
 # -------------
 
 description:
-  A joint initiative by Khalifa University and Dubai Future Foundation to develop intelligent
-  robotic systems that automate airport operations using large language models and symbolic planning.
+  A joint initiative by Dubai Future Foundation (DFF) and Khalifa University (KU)
+  advancing AI-Powered mobile manipulation for airport luggage handling.
 
 # -------------
 
@@ -27,13 +26,13 @@ repository: null
 # -------------
 
 seo:
-  title: AI Powered Airport Automation
+  title: Towards Fully Autonomous Airport Luggage Handling
   description:
-    A joint initiative by Khalifa University and Dubai Future Foundation to develop intelligent
-    robotic systems that automate airport operations using large language models and symbolic planning.
+    A joint initiative by Dubai Future Foundation (DFF) and Khalifa University (KU)
+    advancing AI-Powered mobile manipulation for airport luggage handling.
   image:
-    path: assets/images/architecture.jpg
-    alt: System Architecture Diagram
+    path: assets/images/robot.png
+    alt: Picker 2.0 mobile manipulation platform
 
 # -------------
 
@@ -54,6 +53,11 @@ navigation:
 
   # -------------
 
+  - label: Use Cases
+    href: "#use-cases"
+
+  # -------------
+
   - label: Architecture
     href: "#architecture"
 
@@ -64,7 +68,7 @@ navigation:
 
   # -------------
 
-  - label: Experiments
+  - label: Demonstrations
     href: "#experiments"
 
   # -------------
@@ -80,24 +84,24 @@ navigation:
 # -------------
 
 hero:
-  tagline: KU & DFF Collaboration
+  tagline: DFF & KU Collaboration
   title:
-    - AI Powered
-    - "**Airport Automation**"
+    - Towards Fully Autonomous
+    - "**Airport Luggage Handling**"
   description:
-    A joint initiative by Khalifa University and Dubai Future Foundation to develop intelligent
-    robotic systems that automate airport operations using large language models and symbolic planning.
+    A joint initiative by Dubai Future Foundation (DFF) and Khalifa University (KU)
+    advancing AI-Powered mobile manipulation for airport luggage handling.
   logos:
-    - id: ku
-      path: assets/images/ku-full.png
-      alt: Khalifa University
+    - id: dff
+      path: assets/images/DFL-full.webp
+      alt: Dubai Future Foundation
       framed: false
 
     # -------------
 
-    - id: dff
-      path: assets/images/DFL-full.webp
-      alt: Dubai Future Foundation
+    - id: ku
+      path: assets/images/ku-full.png
+      alt: Khalifa University
       framed: false
 
     # -------------
@@ -130,13 +134,13 @@ footer:
   sourceLabel: Source
   year: 2026
   links:
-    - label: Khalifa University
-      href: https://www.ku.ac.ae
+    - label: Dubai Future Foundation
+      href: https://www.dubaifuture.ae
 
     # -------------
 
-    - label: Dubai Future Foundation
-      href: https://www.dubaifuture.ae
+    - label: Khalifa University
+      href: https://www.ku.ac.ae
 
 # -------------
 

@@ -4,11 +4,43 @@ title: Interested in Collaboration?
 # -------------
 
 paragraphs:
-  - We welcome partnerships, academic collaboration, and industry engagement. Reach out to the principal
-    investigator to learn more about the project.
+  - We welcome partnerships, academic collaboration and industry engagement. Contact the project
+    team at either organization to learn more about the collaboration.
 
 # -------------
 
-links:
-  - label: ✉ yahya.zweiri@ku.ac.ae
-    href: mailto:yahya.zweiri@ku.ac.ae
+links: []
+
+# -------------
+
+groups:
+  - id: dff
+    name: Dubai Future Foundation
+    contacts:
+      - id: tarek-taha
+        name: Dr. Tarek Taha
+        role: Principal Investigator
+        links:
+          - label: tarek.taha@dubaifuture.gov.ae
+            href: mailto:tarek.taha@dubaifuture.gov.ae
+
+      # -------------
+
+      - id: rajkumar-muthusamy
+        name: Dr. Rajkumar Muthusamy
+        role: Lead Researcher
+        links:
+          - label: rajkumar.muthusamy@dubaifuture.gov.ae
+            href: mailto:rajkumar.muthusamy@dubaifuture.gov.ae
+
+  # -------------
+
+  - id: ku
+    name: Khalifa University (ARIC)
+    contacts:
+      - id: yahya-zweiri
+        name: Prof. Yahya Zweiri
+        role: Principal Investigator
+        links:
+          - label: yahya.zweiri@ku.ac.ae
+            href: mailto:yahya.zweiri@ku.ac.ae

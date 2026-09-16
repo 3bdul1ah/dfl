@@ -3,6 +3,7 @@ export function sectionVisible(name, content) {
   if (!section || section.enabled === false) return false;
   if (name === "experiments" || name === "projects")
     return section[name].length > 0;
+  if (name === "use-cases") return section.items.length > 0;
   if (name === "team")
     return Object.values(section.teams).some(
       (group) => group.members.length > 0,

@@ -1,3 +1,4 @@
+# Publish specifications only after they are verified. Keep planned sensing clearly labeled.
 label: Robot Platform
 title: Picker 2.0
 
@@ -10,53 +11,62 @@ image:
 # -------------
 
 paragraphs:
-  - The **Picker 2.0** is a mobile manipulation platform designed and built entirely at **Dubai Future Foundation
-    (DFL)**. It serves as the primary hardware platform for validating the AI airport automation framework
-    in real-world conditions.
+  - The **Picker 2.0** is the mobile manipulation platform developed by **Dubai Future Foundation
+    (DFF)** for the project. It combines a mobile base, a robotic arm and a luggage support platform
+    for research into airport luggage handling.
+  - DFF leads platform and hardware development, while KU and ARIC contribute academic research on
+    AI-Powered planning and robotic capabilities.
 
 # -------------
 
 attribution:
-  label: 🏭 Designed & Built by
+  label: Platform development by
   name: Dubai Future Foundation
 
 # -------------
 
-specifications:
-  - label: Payload Capacity
-    value: TBD
+specifications: []
 
-  # -------------
+# -------------
 
-  - label: Mobile Base
-    value: TBD
+tools:
+  title: Custom End Tools and Transfer Modules
+  items:
+    - id: handler-mini
+      title: Handler Mini
+      description:
+        Engages a suitcase handle and pulls or guides luggage from a baggage cart toward the
+        transition module. The luggage remains supported by the cart or transfer module rather than
+        relying on the arm to lift its full weight.
+      status: in-development
+      useCases:
+        - Unloading
 
-  # -------------
+    # -------------
 
-  - label: Manipulator DOF
-    value: TBD
+    - id: transition-module
+      title: PICKER Transition Module
+      description:
+        Receives luggage extracted by the end tool, supports its weight and transfers it from
+        the cart toward the main arrival conveyor. Slide, powered-conveyor and roller-plus-slide
+        surfaces are being considered.
+      status: in-development
+      useCases:
+        - Unloading
 
-  # -------------
+# -------------
 
-  - label: End Effector
-    value: TBD
+roadmap:
+  title: Planned Sensing Capabilities
+  items:
+    - id: tactile-sensing
+      title: Tactile Sensing
+      description: Planned integration to provide contact and slip feedback for adaptive luggage handling.
+      status: planned
 
-  # -------------
+    # -------------
 
-  - label: Sensors
-    value: TBD
-
-  # -------------
-
-  - label: Battery Life
-    value: TBD
-
-  # -------------
-
-  - label: Max Speed
-    value: TBD
-
-  # -------------
-
-  - label: Dimensions
-    value: TBD
+    - id: neuromorphic-vision
+      title: Neuromorphic Vision
+      description: A future sensing capability under consideration for the mobile manipulation system.
+      status: planned

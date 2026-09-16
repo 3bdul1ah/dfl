@@ -43,16 +43,25 @@ const section = {
   label: optional(text),
 };
 const paragraphs = optional(array(text), []);
-const item = object({
+const status = enumeration([
+  "planned",
+  "in-development",
+  "active",
+  "completed",
+  "archived",
+]);
+const itemFields = {
   id: identifier,
   title: text,
   description: optional(text),
-  status: optional(enumeration(["planned", "active", "completed", "archived"])),
+  status: optional(status),
   image: optional(image),
   video: optional(video),
   tags: strings,
   links,
-});
+};
+const item = object(itemFields);
+const experiment = object({ ...itemFields, category: optional(identifier) });
 const member = object({
   id: optional(identifier),
   name: text,
@@ -148,11 +157,50 @@ export const schemas = {
     imagePlaceholder: optional(text),
     attribution: optional(object({ label: text, name: text })),
     specifications: optional(array(object({ label: text, value: text })), []),
+    tools: optional(
+      object({
+        title: text,
+        items: collection(
+          object({
+            id: identifier,
+            title: text,
+            description: text,
+            status,
+            useCases: array(text),
+          }),
+        ),
+      }),
+    ),
+    roadmap: optional(
+      object({
+        title: text,
+        items: collection(
+          object({ id: identifier, title: text, description: text, status }),
+        ),
+      }),
+    ),
+  }),
+  "use-cases": object({
+    ...section,
+    paragraphs,
+    items: optional(collection(item), []),
   }),
   architecture: object({
     ...section,
+    paragraphs,
     image: optional(image),
     steps: optional(
+      collection(
+        object({
+          id: identifier,
+          title: text,
+          description: text,
+          layer: optional(text),
+        }),
+      ),
+      [],
+    ),
+    principles: optional(
       collection(object({ id: identifier, title: text, description: text })),
       [],
     ),
@@ -165,12 +213,35 @@ export const schemas = {
   }),
   experiments: object({
     ...section,
-    experiments: optional(collection(item), []),
+    paragraphs,
+    categories: optional(
+      collection(
+        object({ id: identifier, title: text, description: optional(text) }),
+      ),
+      [],
+    ),
+    experiments: optional(collection(experiment), []),
   }),
   team: object({
     ...section,
     teams: record(object({ name: text, description: optional(text), members })),
   }),
   projects: object({ ...section, projects: optional(collection(item), []) }),
-  contact: object({ ...section, paragraphs, links }),
+  contact: object({
+    ...section,
+    paragraphs,
+    links,
+    groups: optional(
+      collection(
+        object({
+          id: identifier,
+          name: text,
+          contacts: collection(
+            object({ id: identifier, name: text, role: optional(text), links }),
+          ),
+        }),
+      ),
+      [],
+    ),
+  }),
 };

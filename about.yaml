@@ -1,30 +1,36 @@
 label: About the Project
-title: Intelligent Robotics for Modern Airports
+title: AI-Powered Mobile Manipulation for Airport Luggage Handling
 
 # -------------
 
 paragraphs:
-  - This project, hosted at the **Advanced Research and Innovation Center (ARIC)** within Khalifa University,
-    aims to fully automate common airport operations including luggage handling from check-in, conveyor
-    belts, UMD processes, carts, and more.
-  - At its core, a **central Multimodal Large Language Model (MLLM)** receives natural language task instructions
-    from operators, processes contextual information about the robot's capabilities, sensor data, and environment
-    state, then generates and executes high-level symbolic plans to accomplish complex airport tasks autonomously.
-  - The robot platform is proudly developed and manufactured in the United Arab Emirates, reflecting the
-    UAE's vision for local innovation and advanced technology development.
+  - Initiated and funded by **Dubai Future Foundation (DFF)** through the **Scale-Up Fund**, this
+    collaborative project brings together DFF as the platform and hardware developer and **Khalifa
+    University (KU)**, through the **Advanced Research and Innovation Center (ARIC)**, as the
+    academic and research partner.
+  - The project investigates **mobile manipulation** for loading, unloading and relocating airport
+    luggage. A mobile robot combines navigation, perception and manipulation, with Multimodal Large
+    Language Models (MLLMs) supporting high-level task interpretation and symbolic planning.
+  - The collaboration brings together platform development and academic research in the UAE. Its
+    focus is a research demonstrator for airport luggage handling, with capability validation and
+    system integration progressing toward complete use cases.
 
 # -------------
 
 features:
   - id: luggage-handling
     title: Luggage Handling
-    description: Automated sorting, transport, and management of luggage across check-in and belts.
+    description:
+      Loading luggage from conveyors into carts or Unit Load Devices (ULDs), unloading to
+      arrival belts, and relocating luggage between handling areas.
 
   # -------------
 
   - id: multimodal-llm
     title: Multimodal LLM
-    description: GPT-4, LLaMA, Qwen and other frontier models driving autonomous decision-making.
+    description:
+      Multimodal reasoning connects natural-language task instructions with visual and
+      contextual information.
 
   # -------------
 
@@ -42,7 +48,7 @@ features:
 
   - id: safety-monitoring
     title: Safety Monitoring
-    description: Continuous LiDAR-based safety checks and speed limits around humans.
+    description: Dedicated monitoring and control functions support safe execution around people and obstacles.
 
   # -------------
 

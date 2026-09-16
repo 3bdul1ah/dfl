@@ -13,6 +13,7 @@ projects.yaml
 simulation.yaml
 site.yaml
 team.yaml
+use-cases.yaml
 README.md           Editing and setup guide
 assets/             Images and videos
 website/            Code, documentation and build tooling
@@ -27,6 +28,7 @@ website/            Code, documentation and build tooling
 | Browser tab icon                                              | `favicon.path` in `site.yaml` |
 | About text and feature cards                                  | `about.yaml`                  |
 | Robot platform and specifications                             | `platform.yaml`               |
+| Loading, unloading and relocation                             | `use-cases.yaml`              |
 | Architecture diagram and steps                                | `architecture.yaml`           |
 | Simulation text and video                                     | `simulation.yaml`             |
 | Experiment cards                                              | `experiments.yaml`            |
@@ -66,6 +68,13 @@ Append an item under `experiments` in `experiments.yaml`:
 Use a unique `id` and the actual title and media path. Only `id` and `title`
 are required. Save: a new card appears and the grid adjusts. Projects work the
 same way under `projects` in `projects.yaml`.
+
+To group a recording, set its `category` to an ID from `categories` in the same
+file. Categorized demonstrations require an image or video. Empty categories
+stay hidden. Use `status: in-development` for unfinished work.
+
+Target operations belong in `use-cases.yaml`. Add another item under `items`
+to add a use-case card. These are separate from evidence of completed trials.
 
 For descriptions, images, tags, status and links, see the
 [available fields](website/docs/content.md#experiments-and-projects).

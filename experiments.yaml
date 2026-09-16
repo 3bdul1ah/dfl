@@ -1,7 +1,7 @@
-# Append entries to this list: cards and the responsive grid update automatically.
-# Optional: image, video, status (planned/active/completed/archived), tags, links.
-label: Real-World Experiments
-title: Hardware Demonstrations
+# Categories render only when a matching experiment has image or video evidence.
+# Add recordings to experiments; do not present target use cases as completed trials.
+label: Demonstrations and Validation
+title: Capability Validation
 
 # -------------
 
@@ -9,36 +9,39 @@ experiments:
   - id: navigation
     title: Autonomous Navigation
     description:
-      The Picker 2.0 platform navigating autonomously through a structured environment. The robot
-      builds and maintains an occupancy map in real time, plans collision-free paths, and localizes itself
-      using onboard LiDAR and odometry. This capability is a prerequisite for any airport deployment scenario.
+      The Picker 2.0 platform navigating autonomously through a structured environment. The
+      robot builds and maintains an occupancy map in real time, plans collision-free paths, and
+      localizes itself using onboard LiDAR and odometry. This capability is a prerequisite for any
+      airport deployment scenario.
     video:
       path: assets/videos/Navigation_Experiment.MOV
       types:
         - video/quicktime
         - video/mp4
+    category: navigation
 
   # -------------
 
   - id: grasping-pick-place
     title: "Grasping Experiment: Pick & Place"
     description:
-      Demonstration of the robot's ability to detect, localize, and grasp target objects using
-      6-DoF pose estimation. The manipulation pipeline integrates visual perception with optimal grasp planning
-      to reliably pick luggage-type objects from unstructured surfaces.
+      Demonstration of the robot's ability to detect, localize, and grasp target objects
+      using 6-DoF pose estimation. The manipulation pipeline integrates visual perception with
+      optimal grasp planning to reliably pick luggage-type objects from unstructured surfaces.
     video:
       path: assets/videos/Grasping_Experiment_1.MP4
+    category: manipulation
 
   # -------------
 
   - id: grasping-varied-objects
     title: "Grasping Experiment: Varied Objects"
     description:
-      Testing grasp success across objects of varying size, shape, and weight. The system adapts
-      grasp strategies using tactile slip estimation and control to ensure secure object handling throughout
-      the manipulation sequence.
+      Testing grasping across objects of varying size, shape and weight. This recording
+      documents manipulation capability; tactile feedback integration is a planned development.
     video:
       path: assets/videos/Grasping_Experiment_2.MP4
+    category: manipulation
 
   # -------------
 
@@ -46,7 +49,57 @@ experiments:
     title: "Grasping Experiment: Placement Precision"
     description:
       Evaluating precise placement of grasped objects into designated target locations (e.g.,
-      conveyor slots, carts). The robot uses visual confirmation and feedback from the Execution Manager
-      to validate successful task completion and update the environment state.
+      conveyor slots, carts). The robot uses visual confirmation and feedback from the Execution
+      Manager to validate successful task completion and update the environment state.
     video:
       path: assets/videos/Grasping_Experiment_3.MP4
+    category: manipulation
+
+# -------------
+
+paragraphs:
+  - These recordings document individual navigation and manipulation experiments. System integration
+    and complete loading, unloading and relocation demonstrations remain in development.
+
+# -------------
+
+categories:
+  - id: navigation
+    title: Navigation
+
+  # -------------
+
+  - id: manipulation
+    title: Manipulation
+
+  # -------------
+
+  - id: perception
+    title: Perception
+
+  # -------------
+
+  - id: static-handling
+    title: Static Handling
+
+  # -------------
+
+  - id: dynamic-handling
+    title: Dynamic Handling
+
+  # -------------
+
+  - id: clutter-handling
+    title: Clutter Handling
+
+  # -------------
+
+  - id: system-integration
+    title: System Integration
+    description: Integration evidence for ULD-to-conveyor and shelf-to-conveyor workflows.
+
+  # -------------
+
+  - id: use-case-demonstrations
+    title: Use Case Demonstrations
+    description: End-to-end loading, unloading and relocation evidence.

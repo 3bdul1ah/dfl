@@ -25,6 +25,19 @@ export async function readContent(root = projectRoot) {
   }
   if (!content.site.hero.title.length)
     throw new Error("site.yaml.hero.title: supply at least one title line");
+  const categoryIds = new Set(
+    content.experiments.categories.map(({ id }) => id),
+  );
+  for (const [index, item] of content.experiments.experiments.entries()) {
+    if (item.category && !categoryIds.has(item.category))
+      throw new Error(
+        `experiments.yaml.experiments[${index}].category: unknown category ${item.category}`,
+      );
+    if (item.category && !item.image && !item.video)
+      throw new Error(
+        `experiments.yaml.experiments[${index}]: categorized demonstrations require an image or video as evidence`,
+      );
+  }
   const sectionIds = new Set([
     "hero",
     ...Object.keys(content).filter((key) => key !== "site"),

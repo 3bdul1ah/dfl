@@ -55,20 +55,40 @@ Required entry fields: `id`, `title`.
 
 Optional entry fields:
 
-| Field         | Value                                           |
-| ------------- | ----------------------------------------------- |
-| `description` | Plain text; no hard length limit or truncation  |
-| `status`      | `planned`, `active`, `completed`, or `archived` |
-| `tags`        | Any number of text entries                      |
-| `links`       | A list of labeled links                         |
-| `image`       | `{path, alt}` preview image                     |
-| `video`       | Video object described below                    |
+| Field         | Value                                                             |
+| ------------- | ----------------------------------------------------------------- |
+| `description` | Plain text; no hard length limit or truncation                    |
+| `status`      | `planned`, `in-development`, `active`, `completed`, or `archived` |
+| `tags`        | Any number of text entries                                        |
+| `links`       | A list of labeled links                                           |
+| `image`       | `{path, alt}` preview image                                       |
+| `video`       | Video object described below                                      |
 
 With neither media field, the card has an intentional text-only layout. When
 both exist, the video takes precedence; use `video.poster` for a video preview
 image instead. Add `#projects` to `site.navigation` if you want a navigation
 link to populated projects. Cards appear automatically whether or not they
 have a navigation link. No collection is limited to a fixed number of entries.
+
+### Demonstration categories
+
+`experiments.yaml` has a `categories` list with unique `id`, `title` and optional
+`description`. Set an experiment's `category` to one of those IDs. Unknown
+category references fail validation. A categorized experiment must include an
+image or video; a category with no entries stays hidden. Keep categories such
+as Perception, System Integration and Use Case Demonstrations empty until
+supporting recordings are available. Distinguish isolated capability evidence
+from complete end-to-end validation.
+
+`status: in-development` renders as **In Development**. Use `completed` only
+when the specific work has been demonstrated, not because it is a project target.
+
+### Use cases
+
+`use-cases.yaml` has section `title`, optional `label` and `paragraphs`, and an
+`items` list using the collection fields above. New items render automatically.
+An empty list hides the section and its navigation link. Keep target operations
+separate from demonstration evidence.
 
 ## Videos
 
@@ -156,12 +176,20 @@ links, add or remove entries in `site.socials`; no icon registry is required.
 
 - `about.yaml`: paragraphs and feature entries with `id`, `title`, `description`.
 - `platform.yaml`: paragraphs, optional image/placeholder, attribution, and
-  repeating `{label, value}` specifications. Remove the existing `TBD` entries
-  when appropriate instead of inventing hardware specifications.
-- `architecture.yaml`: optional image and ordered steps, each with `id`, `title`,
-  `description`. Numbers are generated from list order.
+  repeating `{label, value}` specifications. Keep unverified specifications out
+  of the published list. Optional `tools` and `roadmap` each have a `title` and
+  `items` list. Items need `id`, `title`, `description` and `status`; tools also
+  need a `useCases` list of display names. Empty lists stay hidden. Sensing
+  plans must remain marked `planned` until integration is confirmed.
+- `architecture.yaml`: paragraphs, optional approved image and ordered steps,
+  each with `id`, `title`, `description` and optional `layer`. Numbers are
+  generated from list order. `principles` is a list of `{id, title, description}`.
+  The text overview remains available when no approved image is configured.
 - `simulation.yaml`: paragraphs, optional video and tags.
-- `contact.yaml`: paragraphs and labeled links.
+- `contact.yaml`: paragraphs, labeled links and optional `groups`. Each group
+  has a unique `id`, `name` and `contacts` list. Contacts have `id`, `name`,
+  optional `role` and labeled `links`. Groups use the same layout and empty
+  groups stay hidden. List the institutions in the intended display order.
 
 No publications or awards file is included because the original site contains
 neither. Add a new semantic section only when there is real content for it.

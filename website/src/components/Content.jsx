@@ -60,3 +60,11 @@ export function TagList({ tags = [] }) {
     </ul>
   );
 }
+export function ItemStatus({ status }) {
+  if (!status) return null;
+  return (
+    <p className={`item-status status-${status}`}>
+      {status === "in-development" ? "In Development" : status}
+    </p>
+  );
+}

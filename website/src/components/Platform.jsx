@@ -1,4 +1,4 @@
-import { SectionHeader, Paragraphs } from "./Content.jsx";
+import { SectionHeader, Paragraphs, ItemStatus } from "./Content.jsx";
 import { ImageAsset } from "./Media.jsx";
 export default function Platform({ data }) {
   return (
@@ -84,8 +84,39 @@ export default function Platform({ data }) {
                 ))}
               </dl>
             )}
+            {data.roadmap?.items.length > 0 && (
+              <div className="platform-details">
+                <h3>{data.roadmap.title}</h3>
+                <div className="detail-grid">
+                  {data.roadmap.items.map((item) => (
+                    <article className="detail-item" key={item.id}>
+                      <ItemStatus status={item.status} />
+                      <h4>{item.title}</h4>
+                      <p>{item.description}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
+        {data.tools?.items.length > 0 && (
+          <div className="platform-details">
+            <h3>{data.tools.title}</h3>
+            <div className="detail-grid">
+              {data.tools.items.map((tool) => (
+                <article className="detail-item" key={tool.id}>
+                  <ItemStatus status={tool.status} />
+                  <h4>{tool.title}</h4>
+                  <p>{tool.description}</p>
+                  <p className="tool-use-cases">
+                    Use cases: {tool.useCases.join(", ")}
+                  </p>
+                </article>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

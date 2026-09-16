@@ -45,7 +45,11 @@ test("configuration collections render through App, including empty and long-con
         );
         const html = render(next);
         assert.equal(
-          (html.match(/class="collection-card"/g) || []).length,
+          (
+            html.match(
+              /class="collection-card" aria-labelledby="experiments-/g,
+            ) || []
+          ).length,
           count,
         );
         assert.equal(html.includes('id="experiments"'), count > 0);
@@ -90,6 +94,61 @@ test("configuration collections render through App, including empty and long-con
         },
       );
     }
+    await t.test(
+      "evidence categories hide empty groups and new categories render automatically",
+      () => {
+        const next = structuredClone(content);
+        next.experiments.categories.push({
+          id: "new-capability",
+          title: "Additional Capability",
+        });
+        next.experiments.experiments[0].category = "new-capability";
+        const html = render(next);
+        assert(html.includes('id="experiments-category-new-capability"'));
+        assert(!html.includes('id="experiments-category-navigation"'));
+        assert(!html.includes('id="experiments-category-perception"'));
+        assert(!html.includes('id="experiments-category-system-integration"'));
+        assert(html.includes('<h4 id="experiments-navigation"'));
+      },
+    );
+    await t.test(
+      "use cases render from YAML and empty cases remove their navigation link",
+      () => {
+        const next = structuredClone(content);
+        next["use-cases"].items.push({
+          id: "another-case",
+          title: "Additional Case",
+          status: "in-development",
+          links: [],
+          tags: [],
+        });
+        let html = render(next);
+        assert(html.includes('id="use-cases-another-case"'));
+        assert(html.includes(">In Development</p>"));
+        next["use-cases"].items = [];
+        html = render(next);
+        assert(!html.includes('id="use-cases"'));
+        assert(!html.includes('href="#use-cases"'));
+      },
+    );
+    await t.test(
+      "organization contacts and planned hardware render without placeholder specifications",
+      () => {
+        const html = render(content);
+        for (const email of [
+          "tarek.taha@dubaifuture.gov.ae",
+          "rajkumar.muthusamy@dubaifuture.gov.ae",
+          "yahya.zweiri@ku.ac.ae",
+        ])
+          assert(html.includes(`href="mailto:${email}"`));
+        assert(html.includes("Abhinav Pathak"));
+        assert(html.includes("Dr. Rajkumar Muthusamy"));
+        assert(!html.includes("TBD"));
+        assert(!html.includes("Image coming soon"));
+        assert(html.includes("status-planned"));
+        assert(html.includes("Neuromorphic Vision"));
+      },
+    );
     await t.test(
       "projects use the same collection renderer without application changes",
       () => {

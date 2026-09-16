@@ -1,8 +1,15 @@
-import { SectionHeader, TagList, ContentLinks } from "./Content.jsx";
+import {
+  SectionHeader,
+  TagList,
+  ContentLinks,
+  Paragraphs,
+  ItemStatus,
+} from "./Content.jsx";
 import { ImageAsset, VideoAsset } from "./Media.jsx";
 
-export function CollectionCard({ item, sectionId }) {
+export function CollectionCard({ item, sectionId, headingLevel = 3 }) {
   const heading = `${sectionId}-${item.id}`;
+  const Heading = `h${headingLevel}`;
   return (
     <article className="collection-card" aria-labelledby={heading}>
       {item.video ? (
@@ -17,10 +24,8 @@ export function CollectionCard({ item, sectionId }) {
         )
       )}
       <div className="card-body">
-        {item.status && (
-          <p className={`item-status status-${item.status}`}>{item.status}</p>
-        )}
-        <h3 id={heading}>{item.title}</h3>
+        <ItemStatus status={item.status} />
+        <Heading id={heading}>{item.title}</Heading>
         {item.description && <p>{item.description}</p>}
         <TagList tags={item.tags} />
         <ContentLinks links={item.links} />
@@ -30,15 +35,45 @@ export function CollectionCard({ item, sectionId }) {
 }
 export default function CollectionSection({ id, data, items }) {
   if (!items.length) return null;
+  const groups = (data.categories ?? [])
+    .map((category) => ({
+      ...category,
+      items: items.filter((item) => item.category === category.id),
+    }))
+    .filter((group) => group.items.length);
+  const ungrouped = items.filter((item) => !item.category);
   return (
     <section id={id} aria-labelledby={`${id}-heading`} tabIndex={-1}>
       <div className="section-inner">
         <SectionHeader id={id} {...data} />
-        <div className="collection-grid">
-          {items.map((item) => (
-            <CollectionCard key={item.id} item={item} sectionId={id} />
-          ))}
+        <div className="section-intro">
+          <Paragraphs paragraphs={data.paragraphs} />
         </div>
+        {groups.map((group) => (
+          <div className="collection-group" key={group.id}>
+            <h3 id={`${id}-category-${group.id}`}>{group.title}</h3>
+            {group.description && (
+              <p className="group-description">{group.description}</p>
+            )}
+            <div className="collection-grid">
+              {group.items.map((item) => (
+                <CollectionCard
+                  key={item.id}
+                  item={item}
+                  sectionId={id}
+                  headingLevel={4}
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+        {ungrouped.length > 0 && (
+          <div className="collection-grid">
+            {ungrouped.map((item) => (
+              <CollectionCard key={item.id} item={item} sectionId={id} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

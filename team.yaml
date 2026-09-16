@@ -1,11 +1,50 @@
-# Groups are independent and render in file order. Add another key to add a group.
-# Only member name is required. Optional: id, initials, role, badge, bio, image, links.
 label: Our Team
 title: Research Team
 
 # -------------
 
 teams:
+  dfl:
+    name: Dubai Future Foundation
+    members:
+      - id: dr-tarek-taha
+        name: Dr. Tarek Taha
+        image:
+          path: assets/images/Dr. Tarek Taha.jpg
+          alt: Dr. Tarek Taha
+        initials: TT
+        role: Principal Investigator · Dubai Future Foundation
+        badge: PI
+
+      # -------------
+
+      - id: dr-rajkumar-muthusamy
+        name: Dr. Rajkumar Muthusamy
+        image:
+          path: assets/images/Dr. Rajkumar Muthusamy.jpeg
+          alt: Dr. Rajkumar Muthusamy
+        initials: RM
+        role: Lead Researcher · Dubai Future Foundation
+
+      # -------------
+
+      - id: abhinav-pathak
+        name: Abhinav Pathak
+        initials: AP
+        role: Manipulation Engineer · Dubai Future Foundation
+
+      # -------------
+
+      - id: qasim-kapasi
+        name: Qasim Kapasi
+        image:
+          path: assets/images/Qasim Kapasi.jpeg
+          alt: Qasim Kapasi
+        initials: QK
+        role: Project Manager · Dubai Future Foundation
+
+  # -------------
+
   aric:
     name: Khalifa University (ARIC)
     members:
@@ -68,37 +107,3 @@ teams:
           alt: Abdullah Alshateri
         initials: AA
         role: Researcher · Khalifa University
-
-  # -------------
-
-  dfl:
-    name: Dubai Future Foundation
-    members:
-      - id: dr-tarek-taha
-        name: Dr. Tarek Taha
-        image:
-          path: assets/images/Dr. Tarek Taha.jpg
-          alt: Dr. Tarek Taha
-        initials: TT
-        role: Principal Investigator · Dubai Future Foundation
-        badge: PI
-
-      # -------------
-
-      - id: dr-rajkumar-muthasasmy
-        name: Dr. Rajkumar Muthasasmy
-        image:
-          path: assets/images/Dr. Rajkumar Muthasasmy.jpeg
-          alt: Dr. Rajkumar Muthasasmy
-        initials: RM
-        role: Researcher · Dubai Future Foundation
-
-      # -------------
-
-      - id: qasim-kapasi
-        name: Qasim Kapasi
-        image:
-          path: assets/images/Qasim Kapasi.jpeg
-          alt: Qasim Kapasi
-        initials: QK
-        role: Project Manager · Dubai Future Foundation

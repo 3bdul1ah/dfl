@@ -87,6 +87,21 @@ test("unknown section links are caught before deployment", async (t) => {
   await save();
   await assert.rejects(readContent(root), /unknown section #unknown/);
 });
+test("demonstration categories require a known category and media evidence", async (t) => {
+  const { root, content, save } = await contentFixture(t);
+  const item = content.experiments.experiments[0];
+  item.category = "missing-category";
+  await save();
+  await assert.rejects(readContent(root), /category: unknown category/);
+  item.category = "navigation";
+  delete item.video;
+  delete item.image;
+  await save();
+  await assert.rejects(
+    readContent(root),
+    /require an image or video as evidence/,
+  );
+});
 test("fresh forks, user sites, custom domains and local development resolve without owner constants", () => {
   assert.equal(deployment({}, {}).base, "/");
   assert.deepEqual(

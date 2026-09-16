@@ -1,47 +1,83 @@
+# Add image: {path: assets/images/..., alt: ...} when the latest approved diagram is available.
+# The numbered overview below remains readable without a diagram.
 label: System Architecture
-title: How It Works
-
-# -------------
-
-image:
-  path: assets/images/architecture.jpg
-  alt: System Architecture Diagram
+title: MLLM-Enabled Modular Robotic Architecture
 
 # -------------
 
 steps:
   - id: step-1
-    title: User Prompt
-    description: Operator issues a natural-language task (e.g., "Sort all luggage in Hall A").
+    title: Task Instruction
+    layer: Operator input
+    description:
+      The operator specifies a luggage-handling goal in natural language, together with the
+      relevant location and task constraints.
 
   # -------------
 
   - id: step-2
-    title: MLLM Reasoning
+    title: Context and Task Reasoning
+    layer: MLLM-dependent
     description:
-      The MLLM processes robot metadata, sensory data (LiDAR, RGB-D, IMU), task parameters, and
-      environment state.
+      The MLLM interprets the instruction alongside robot metadata, sensor-derived
+      information and the current environment state.
 
   # -------------
 
   - id: step-3
-    title: Symbolic Plan Generation
+    title: Symbolic Task Plan
+    layer: MLLM-dependent
     description:
-      Generates a high-level plan decomposed into step-by-step sub-tasks and selects the appropriate
-      tools.
+      High-level reasoning decomposes the goal into sub-tasks and selects the perception,
+      navigation and manipulation tools needed for execution.
 
   # -------------
 
   - id: step-4
-    title: Execution & Feedback
+    title: Execution and Monitoring
+    layer: LLM-independent robotics tools
     description:
-      The Execution Manager carries out actions, records robot states, and feeds results back
-      into the loop.
+      Dedicated tools carry out perception, motion planning and robot control. The Execution
+      Manager runs the selected actions and collects feedback; safety monitoring remains a separate
+      control function.
 
   # -------------
 
   - id: step-5
-    title: States Memory
+    title: State and Feedback
+    layer: LLM-independent state storage
     description:
-      Environment state is maintained as JSON/TF/XACRO, tracking all known objects and mission
-      history.
+      The system records robot and environment state, task progress and execution results.
+      This information feeds back into task reasoning when a plan needs to be updated.
+
+# -------------
+
+paragraphs:
+  - The architecture separates MLLM-enabled task interpretation and symbolic planning from the
+    perception, navigation, manipulation and control tools used to execute a task. The MLLM selects
+    and sequences independently executable robotics tools.
+
+# -------------
+
+principles:
+  - id: flexibility
+    title: Flexibility
+    description:
+      Tools can be updated independently of high-level task reasoning, so new capabilities
+      can fit into the same workflow.
+
+  # -------------
+
+  - id: safety
+    title: Safety
+    description:
+      Separating task reasoning from monitoring and control allows execution constraints to
+      be enforced outside the language model.
+
+  # -------------
+
+  - id: scalability
+    title: Scalability
+    description:
+      Shared tool interfaces and state feedback support extension to additional
+      luggage-handling tasks and robot capabilities.

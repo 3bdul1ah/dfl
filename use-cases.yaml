@@ -1,0 +1,34 @@
+label: Use Cases
+title: Loading, Unloading and Relocation
+
+# -------------
+
+paragraphs:
+  - These target airport luggage-handling operations are in development. Current experiments validate
+    individual capabilities while end-to-end integration continues. ULD means Unit Load Device.
+
+# -------------
+
+items:
+  - id: loading
+    title: Loading
+    status: in-development
+    description:
+      Mobile manipulator picks luggage from departure conveyor belts and stacks them into
+      designated baggage carts or ULDs for aircraft loading.
+
+  # -------------
+
+  - id: unloading
+    title: Unloading
+    status: in-development
+    description: Unloads luggage from carts or ULDs and places it onto the arrival belt for passenger claim.
+
+  # -------------
+
+  - id: relocation
+    title: Relocation
+    status: in-development
+    description:
+      Clearing buffer zones by picking, storing, transporting, and placing luggage in
+      designated reprocessing locations such as shelves, inspection tables, or reentry conveyors.

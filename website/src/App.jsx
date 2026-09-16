@@ -21,6 +21,13 @@ export default function App({ content = siteContent }) {
         {sectionVisible("platform", content) && (
           <Platform data={content.platform} />
         )}
+        {sectionVisible("use-cases", content) && (
+          <CollectionSection
+            id="use-cases"
+            data={content["use-cases"]}
+            items={content["use-cases"].items}
+          />
+        )}
         {sectionVisible("architecture", content) && (
           <Architecture data={content.architecture} />
         )}
