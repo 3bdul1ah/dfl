@@ -1,0 +1,28 @@
+label: Robot Platform
+title: Picker 2.0
+image: null
+imagePlaceholder: Image coming soon
+paragraphs:
+  - The **Picker 2.0** is a mobile manipulation platform designed and built entirely at **Dubai Future Foundation
+    (DFL)**. It serves as the primary hardware platform for validating the AI airport automation framework
+    in real-world conditions.
+attribution:
+  label: 🏭 Designed & Built by
+  name: Dubai Future Foundation
+specifications:
+  - label: Payload Capacity
+    value: TBD
+  - label: Mobile Base
+    value: TBD
+  - label: Manipulator DOF
+    value: TBD
+  - label: End Effector
+    value: TBD
+  - label: Sensors
+    value: TBD
+  - label: Battery Life
+    value: TBD
+  - label: Max Speed
+    value: TBD
+  - label: Dimensions
+    value: TBD

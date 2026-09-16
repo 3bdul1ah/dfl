@@ -1,0 +1,4 @@
+# Optional collection. Empty collections do not render.
+# Entries use the same fields as experiments; no example projects are published.
+title: Projects
+projects: []

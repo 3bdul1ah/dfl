@@ -1,17 +1,30 @@
-export default function Footer() {
+import { ContentLink, ContentLinks } from "./Content.jsx";
+export default function Footer({ site }) {
   return (
-    <footer>
-      {" "}
+    <footer className="site-footer">
       <p>
-        {" © 2026 AI Powered Airport Automation · "}
-        <a href="https://www.ku.ac.ae" target="_blank" rel="noopener">
-          {"Khalifa University"}
-        </a>
-        {" & "}
-        <a href="https://www.dubaifuture.ae" target="_blank" rel="noopener">
-          {"Dubai Future Foundation"}
-        </a>{" "}
-      </p>{" "}
+        © {site.footer.year} {site.name}
+        {site.footer.links.length > 0 && (
+          <>
+            {" "}
+            ·{" "}
+            {site.footer.links.map((link, index) => (
+              <span key={link.href}>
+                {index > 0 && " & "}
+                <ContentLink href={link.href}>{link.label}</ContentLink>
+              </span>
+            ))}
+          </>
+        )}
+      </p>
+      <ContentLinks
+        links={[
+          ...site.socials,
+          ...(site.repository && site.footer.sourceLabel
+            ? [{ label: site.footer.sourceLabel, href: site.repository }]
+            : []),
+        ]}
+      />
     </footer>
   );
 }

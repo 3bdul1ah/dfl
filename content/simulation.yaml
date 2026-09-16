@@ -1,0 +1,18 @@
+label: Simulation Environment
+title: Realistic Airport Scenario in NVIDIA Isaac Sim
+paragraphs:
+  - To accelerate development and safely validate our framework before real-world deployment, we have constructed
+    a high-fidelity airport scenario within **NVIDIA Isaac Sim**. The environment faithfully replicates
+    key airport operational areas including baggage claim halls, check-in counters, conveyor belts, and
+    UMD zones.
+  - The simulation enables full end-to-end testing of the MLLM-driven pipeline — from natural language task
+    input through symbolic plan generation to robot execution — under diverse conditions and edge cases
+    that would be difficult or unsafe to test in a live airport environment.
+video:
+  path: assets/videos/isaac sim simulation.mp4
+tags:
+  - NVIDIA Isaac Sim
+  - Physics-Based Rendering
+  - Sim-to-Real Transfer
+  - Baggage Operations
+  - Multi-Robot Testing

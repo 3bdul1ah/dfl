@@ -1,5 +1,5 @@
 {
-  "name": "dfl-fork-website",
+  "name": "research-project-website",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,18 +7,27 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "assets": "node scripts/prepare-assets.mjs",
-    "dev": "npm run assets && vite --host 127.0.0.1",
-    "build": "npm run assets && vite build && node scripts/prerender.mjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build && node scripts/prerender.mjs",
     "preview": "vite preview --host 127.0.0.1",
-    "test": "node --test"
+    "content:check": "node scripts/content.mjs --check",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "node --test",
+    "check": "npm run lint && npm run format:check && npm run content:check && npm test && npm run build"
   },
   "dependencies": {
     "react": "^19.3.0",
     "react-dom": "^19.3.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.5",
     "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^9.39.5",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^17.12.0",
+    "image-size": "^2.0.4",
     "prettier": "^3.9.7",
     "vite": "^8.3.0",
     "yaml": "^2.9.1"

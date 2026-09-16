@@ -1,24 +1,7 @@
-# Files are relative to the repository root. Only listed media is published.
-# Add experiment entries to create cards automatically on the next build.
-images:
-  ku:
-    path: assets/images/ku-full.png
-    alt: Khalifa University
-  dff:
-    path: assets/images/DFL-full.webp
-    alt: Dubai Future Foundation
-  aric:
-    path: assets/images/ARIC logo.png
-    alt: ARIC
-  madeInEmirates:
-    path: assets/images/Made-in-the-Emirates.jpg
-    alt: Made in the Emirates
-  architecture:
-    path: assets/images/architecture.jpg
-    alt: System Architecture Diagram
-simulation:
-  video:
-    path: assets/videos/isaac sim simulation.mp4
+# Append entries to this list: cards and the responsive grid update automatically.
+# Optional: image, video, status (planned/active/completed/archived), tags, links.
+label: Real-World Experiments
+title: Hardware Demonstrations
 experiments:
   - id: navigation
     title: Autonomous Navigation

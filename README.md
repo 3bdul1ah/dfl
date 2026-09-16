@@ -1,107 +1,166 @@
-# AI Powered Airport Automation
+# Research project website
 
-Standalone React website for **3bdul1ah/dfl**:
+A content-driven research website built with React, Vite and plain CSS. It
+prerenders to static HTML and publishes its images and videos with the site.
+Content, identity and collections live in YAML; adding a card or a team does
+not require editing React.
 
-https://3bdul1ah.github.io/dfl/
+The included content documents the AI Powered Airport Automation collaboration.
+It is real project content, not a collection of fictional template examples.
+Replace it with your own information when customizing a fork.
 
-## Add or replace media
+## Quick start
 
-1. Put your image or video in `assets/images/` or `assets/videos/`.
-2. Reference its repository-relative path in **`upload.yaml`**.
-3. Commit the file and YAML change, then push to this fork's **`main`** branch.
-
-The build validates the YAML, downloads Git LFS content in CI, copies the listed
-media into the website, builds React, and deploys everything to GitHub Pages.
-There is no release-upload step and no dependency on release download URLs.
-The old `v1.0` release can remain as an archive; the website no longer uses it.
-
-For example, append an experiment to the `experiments` list:
-
-```yaml
-- id: mapping
-  title: Mapping Experiment
-  description: Describe the demonstration here.
-  video:
-    path: assets/videos/Mapping_Experiment.MP4
-```
-
-This creates an additional card automatically, in YAML list order. Each `id`
-must be unique. Keep existing entries to keep their cards. Text is rendered as
-plain text, so YAML descriptions do not need HTML.
-
-- `images` configures the existing named image slots (`ku`, `dff`, `aric`,
-  `madeInEmirates`, `architecture`) with `path` and `alt` fields. Adding a new
-  image slot to the layout also requires adding an `ImageAsset` component.
-- `simulation.video` configures the simulation player.
-- `experiments` configures the repeatable demonstration cards, including their
-  `id`, `title`, `description`, and `video.path`.
-- Video MIME types are inferred from extensions. An optional `video.types` list
-  supports multiple source declarations, as used by the existing MOV video.
-- Paths may contain spaces and are case-sensitive. Files must exist under
-  `assets/`. Only media referenced in the YAML is copied to the deployed site.
-- Files are copied byte-for-byte, without transcoding. Use browser-compatible
-  media. Content hashes in generated filenames prevent stale cached replacements.
-- Missing files, unresolved Git LFS pointers, malformed configuration, duplicate
-  IDs, and excessive deployment size fail the build before deployment.
-
-Videos are tracked by Git LFS through `.gitattributes`. Install Git LFS and run
-`git lfs pull` after cloning to obtain their actual contents. Add and commit new
-videos normally; Git LFS manages the upload during `git push`.
-
-## Development
-
-Use Node.js 22.12 or newer and npm:
+Prerequisites: Node.js **22.12 or newer**, npm, and Git LFS for the included videos.
 
 ```sh
+git clone <your-repository-url>
+cd <your-repository-directory>
+git lfs install
+git lfs pull
 npm ci
 npm run dev
 ```
 
-Open the printed URL (normally http://127.0.0.1:5173/dfl/). Restart `npm run dev`
-after changing `upload.yaml` or media files so the asset manifest is regenerated.
-React component and CSS edits update through Vite's development server.
+Open the URL printed by Vite, normally `http://127.0.0.1:5173/`. YAML and media
+changes reload the development page automatically. Invalid content produces an
+error with the file/field to fix; it is never silently published. Fix the file
+and save again to recover. Component and CSS edits also update automatically.
+
+## Content files
+
+| File                        | Controls                                                             |
+| --------------------------- | -------------------------------------------------------------------- |
+| `content/site.yaml`         | Identity, hero, logos, navigation, metadata, social links and footer |
+| `content/about.yaml`        | About paragraphs and repeating feature cards                         |
+| `content/platform.yaml`     | Platform description, image and specifications                       |
+| `content/architecture.yaml` | Architecture image and ordered steps                                 |
+| `content/simulation.yaml`   | Simulation description, video and tags                               |
+| `content/experiments.yaml`  | Experiment cards                                                     |
+| `content/team.yaml`         | Independent ARIC, DFL and any additional team groups                 |
+| `content/projects.yaml`     | Optional project cards; initially empty                              |
+| `content/contact.yaml`      | Contact text and links                                               |
+
+`upload.yaml` has been replaced by these section files. Put each asset path
+beside the content that uses it. There is no duplicate upload manifest to maintain.
+See [the content guide](docs/content.md) for schemas, examples and validation rules.
+
+### Add an experiment
+
+1. Put the recording or image under `assets/`, if the entry needs media.
+2. Open `content/experiments.yaml`.
+3. Append an entry to `experiments` with a unique `id` and a `title`.
+4. Save. The new card appears and the grid adjusts automatically.
+
+Descriptions, images, videos, status, tags and links are optional. You can add
+one item or many; the component does not need to change. Projects work the same
+way in `content/projects.yaml`. An empty collection hides its section and any
+navigation link pointing to it.
+
+### Edit teams
+
+Open `content/team.yaml` and add a member under the appropriate group's `members`
+list. Only `name` is required; supply an explicit `id` if the name could change
+or two members have the same name. Roles, biographies, portraits and links are
+optional.
+
+To add another group, add another key under `teams` with a `name` and `members`.
+Groups render in file order. Empty groups do not create empty containers.
+ARIC and DFL are data entries, not hardcoded component branches.
+
+### Customize identity and assets
+
+Edit `site.yaml` for the brand, hero title, description, logos, SEO, navigation,
+footer and social links; edit `contact.yaml` for contact details. Historical
+project affiliations and team member information live only in content files.
+
+Use paths such as `assets/images/architecture.jpg` or
+`assets/videos/Mapping_Experiment.MP4`. Paths are case-sensitive and may contain
+spaces. Add meaningful `alt` text to images; team and experiment images can use
+the person's name or card title as a fallback. The build reads intrinsic image
+dimensions to reserve space. Omit an optional image entirely for an image-less
+card, or remove a portrait to use initials.
+
+Only referenced assets are deployed. They receive content-hashed URLs so
+replacements are not hidden behind stale browser caches. Video files are copied
+without transcoding. Keep them browser-compatible. Existing Git LFS rules cover
+MP4/MOV; add rules for additional large video formats if you start using them.
+GitHub Releases are not involved in publishing.
+
+## Checks and production preview
 
 ```sh
+npm run lint
+npm run format:check
+npm run content:check
 npm test
 npm run build
 npm run preview
 ```
 
-Preview the production build at http://127.0.0.1:4173/dfl/.
+`npm run check` runs all checks and the production build. `npm run format` applies
+Prettier. This is a JavaScript project: YAML has runtime schemas and tests rather
+than a TypeScript typecheck script. ESLint checks JavaScript and JSX.
 
-## Project layout
+The production build prerenders the page, preserving content, section links,
+mobile navigation and native video controls without JavaScript. React hydrates
+it to enhance menu focus behavior. Generated files under `dist/`,
+`public/assets/` and `src/generated/` are ignored by Git.
 
-- `upload.yaml`: editable media paths and experiment content.
-- `assets/`: original images and Git LFS videos.
-- `src/components/`: React sections and shared media/card components.
-- `src/styles.css`: the original website styles.
-- `scripts/prepare-assets.mjs`: validates media and generates the asset manifest.
-- `scripts/prerender.mjs`: renders the page to HTML at build time, preserving
-  content, navigation and native video controls even without JavaScript.
-- `.github/workflows/deploy.yaml`: tests, builds and deploys this fork only.
-- `dist/`, `public/assets/`, `src/generated/`: generated files; do not edit or commit.
+## Deploy your own fork
 
-The existing wording, layout, responsive styles, section IDs, and video controls
-are preserved. Additional page layouts can be implemented as React components.
+1. Fork this repository and customize `content/`.
+2. In **your repository** choose **Settings → Pages → Source → GitHub Actions**.
+3. Enable Actions in your fork if GitHub has disabled them.
+4. Push to your repository's default branch, or run **Check and deploy website**
+   from the Actions tab on that branch.
 
-## Deployment
+The workflow tests and builds branches and pull requests, but publishes only
+from the repository's default branch. It uses the current repository's Pages
+URL; there is no original-owner allowlist, hardcoded `/dfl/` base, or upstream
+push. Your repository's normal branch/environment protection rules still apply.
+A custom domain configured in Pages is picked up by the same workflow.
 
-GitHub Pages uses **GitHub Actions** as its publishing source. The workflow runs
-on pushes to `main`; pull requests to `main` are tested and built without
-publishing. Manual runs are also available from the Actions tab. A repository
-check permits deployment only from `3bdul1ah/dfl`.
+Leave `site.url` and `site.repository` null for automatic GitHub detection.
+For other static hosts, set `url` to your complete public site URL (including
+any subdirectory), then upload `dist/`. You can also set `SITE_URL` and
+`SITE_BASE` when building. The base must start and end with `/`.
 
-The workflow checks out actual Git LFS files (`lfs: true`), runs `npm ci`, tests,
-and builds, then uploads `dist/` as the Pages artifact. Vite's `/dfl/` base path
-makes all script, stylesheet, image and video URLs work under the project URL.
-Pushes only to `new/feat` do not update the live site until merged into `main`.
+```sh
+SITE_URL=https://research.example.org/work/ npm run build
+npm run preview
+```
 
-GitHub Pages limits the published site to 1 GB and has a soft bandwidth limit
-of 100 GB/month. The build reserves space for the app by limiting listed media
-to 950 MB, and checks the final deployment size. A larger video library may
-need a separate media host later.
+Visit `/work/` on the preview server in this example. Local development defaults
+to `/` when no deployment URL is configured. Changing the base in YAML restarts
+Vite automatically; use its updated URL. Changing a custom domain in YAML does
+not configure DNS or GitHub settings for you.
 
-Original project: https://github.com/AdvancedResearchInnovationCenter/dfl
+GitHub Pages has a 1 GB published-site limit and a 100 GB/month soft bandwidth
+limit. The pipeline limits referenced media to 950 MB and checks the complete
+build. Large or heavily watched video libraries may eventually need a media
+host. The site does not transcode video or generate responsive image variants.
 
-This fork's deployment is independent. Do not change `origin` to the upstream
-repository when publishing this site.
+## Project structure
+
+```text
+content/                  Editable YAML content
+assets/                   Original images and Git LFS recordings
+src/components/           Page sections, collection cards and shared presentation
+src/lib/content/          YAML schemas, asset processing and deployment metadata
+src/lib/sections.js        Visibility rules shared by page and navigation
+scripts/content-plugin.mjs Vite integration and live YAML reload
+scripts/prerender.mjs      Static HTML generation
+src/styles.css            Shared tokens, responsive layout and interactions
+tests/                    Content, asset and rendering acceptance tests
+.github/workflows/        Repository-aware checks and Pages deployment
+```
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for the development workflow and
+[the content guide](docs/content.md) for all supported fields.
+
+Original project attribution:
+[Advanced Research and Innovation Center](https://github.com/AdvancedResearchInnovationCenter/dfl).
+No license was present in the original repository; this refactor does not grant
+new rights to its source, branding or media. Confirm reuse rights before
+redistributing them.

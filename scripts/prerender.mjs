@@ -6,6 +6,7 @@ import { createServer } from "vite";
 
 // Keep the original site's content, anchor links and media usable without JS.
 const server = await createServer({
+  cacheDir: "node_modules/.vite-prerender",
   server: { middlewareMode: true, hmr: false, ws: false, watch: null },
   appType: "custom",
 });

@@ -1,121 +1,78 @@
-export default function Team() {
+import { SectionHeader, ContentLinks } from "./Content.jsx";
+import { ImageAsset } from "./Media.jsx";
+
+export function TeamMemberCard({ member, groupId }) {
+  const initials =
+    member.initials ??
+    member.name
+      .split(/\s+/u)
+      .slice(0, 2)
+      .map((part) => Array.from(part)[0])
+      .join("");
   return (
-    <section id="team">
-      {" "}
+    <article
+      className="member-card"
+      aria-labelledby={`member-${groupId}-${member.id}`}
+    >
+      {member.image ? (
+        <ImageAsset
+          asset={member.image}
+          alt={member.image.alt || member.name}
+          className="member-portrait"
+        />
+      ) : (
+        <div className="avatar" aria-hidden="true">
+          {initials}
+        </div>
+      )}
+      <div className="member-info">
+        <h4 id={`member-${groupId}-${member.id}`}>
+          {member.name}
+          {member.badge && (
+            <>
+              {" "}
+              <span className="member-badge">{member.badge}</span>
+            </>
+          )}
+        </h4>
+        {member.role && <p className="member-role">{member.role}</p>}
+        {member.bio && <p className="member-bio">{member.bio}</p>}
+        <ContentLinks links={member.links} />
+      </div>
+    </article>
+  );
+}
+export default function Team({ data }) {
+  const groups = Object.entries(data.teams).filter(
+    ([, group]) => group.members.length,
+  );
+  if (!groups.length) return null;
+  return (
+    <section id="team" aria-labelledby="team-heading" tabIndex={-1}>
       <div className="section-inner">
-        {" "}
-        <p className="section-label">{"Our Team"}</p> <h2>{"Research Team"}</h2>{" "}
-        <div className="section-divider"></div>{" "}
-        <div className="team-cols">
-          {" "}
-          <div>
-            {" "}
-            <div className="team-group-title">
-              {"Khalifa University — ARIC"}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"YZ"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>
-                  {"Prof. Yahya Zweiri "}
-                  <span className="pi-badge">{"PI"}</span>
-                </h4>{" "}
-                <span>
-                  {"Principal Investigator · Khalifa University"}
-                </span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"MD"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>
-                  {"Prof. Merouane Debbah "}
-                  <span className="pi-badge">{"Co-I"}</span>
-                </h4>{" "}
-                <span>{"Co-Investigator · Khalifa University"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"HS"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Hussain Sajwani"}</h4>{" "}
-                <span>{"Researcher · Khalifa University"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"AA"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Abdulla Ayyad"}</h4>{" "}
-                <span>{"Researcher · Khalifa University"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"XH"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Xiaoqian Huang"}</h4>{" "}
-                <span>{"Researcher · Khalifa University"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"AA"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Abdullah Alshateri"}</h4>{" "}
-                <span>{"Researcher · Khalifa University"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-          <div>
-            {" "}
-            <div className="team-group-title">
-              {"Dubai Future Foundation"}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"TT"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>
-                  {"Dr. Tarek Taha "}
-                  <span className="pi-badge">{"PI"}</span>
-                </h4>{" "}
-                <span>
-                  {"Principal Investigator · Dubai Future Foundation"}
-                </span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"RM"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Dr. Rajkumar Muthasasmy"}</h4>{" "}
-                <span>{"Researcher · Dubai Future Foundation"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-            <div className="member-card">
-              {" "}
-              <div className="avatar">{"QK"}</div>{" "}
-              <div className="member-info">
-                {" "}
-                <h4>{"Qasim Kapasi"}</h4>{" "}
-                <span>{"Project Manager · Dubai Future Foundation"}</span>{" "}
-              </div>{" "}
-            </div>{" "}
-          </div>{" "}
-        </div>{" "}
-      </div>{" "}
+        <SectionHeader id="team" {...data} />
+        <div className="team-groups">
+          {groups.map(([id, group]) => (
+            <div className="team-group" key={id}>
+              <h3 className="team-group-title" id={`team-${id}`}>
+                {group.name}
+              </h3>
+              {group.description && (
+                <p className="team-description">{group.description}</p>
+              )}
+              <div className="team-grid">
+                {group.members.map((member) => (
+                  <TeamMemberCard
+                    key={member.id}
+                    member={member}
+                    groupId={id}
+                  />
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
