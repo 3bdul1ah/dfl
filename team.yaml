@@ -28,16 +28,6 @@ teams:
 
       # -------------
 
-      - id: abhinav-pathak
-        name: Abhinav Pathak
-        image:
-          path: assets/images/Abhinav Pathak.jpeg
-          alt: Abhinav Pathak
-        initials: AP
-        role: Manipulation Engineer · Dubai Future Foundation
-
-      # -------------
-
       - id: qasim-kapasi
         name: Qasim Kapasi
         image:
@@ -45,6 +35,16 @@ teams:
           alt: Qasim Kapasi
         initials: QK
         role: Project Manager · Dubai Future Foundation
+
+      # -------------
+
+      - id: abhinav-pathak
+        name: Abhinav Pathak
+        image:
+          path: assets/images/Abhinav Pathak.jpeg
+          alt: Abhinav Pathak
+        initials: AP
+        role: Manipulation Engineer · Dubai Future Foundation
 
   # -------------
 
