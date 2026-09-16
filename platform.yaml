@@ -3,11 +3,9 @@ title: Picker 2.0
 
 # -------------
 
-image: null
-
-# -------------
-
-imagePlaceholder: Image coming soon
+image:
+  path: assets/images/robot.png
+  alt: Picker 2.0 mobile robot with a robotic arm mounted above its cargo platform
 
 # -------------
 
