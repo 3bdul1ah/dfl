@@ -48,11 +48,9 @@ export async function resolveAssets(content, root, { write = true } = {}) {
         result[key] = await walk(entry, `${field}.${key}`);
       return result;
     }
-    if (!value.path.startsWith("website/assets/") || value.path.includes("\\"))
-      throw new Error(
-        `${field}.path: use a repository-relative website/assets/ path`,
-      );
-    assetsRoot ??= await realpath(path.join(root, "website/assets"));
+    if (!value.path.startsWith("assets/") || value.path.includes("\\"))
+      throw new Error(`${field}.path: use a repository-relative assets/ path`);
+    assetsRoot ??= await realpath(path.join(root, "assets"));
     let source;
     try {
       source = await realpath(path.resolve(root, value.path));
@@ -60,7 +58,7 @@ export async function resolveAssets(content, root, { write = true } = {}) {
       throw new Error(`${field}.path: file not found: ${value.path}`);
     }
     if (!source.startsWith(assetsRoot + path.sep))
-      throw new Error(`${field}.path: must stay inside website/assets/`);
+      throw new Error(`${field}.path: must stay inside assets/`);
     const info = await stat(source);
     if (!info.isFile() || !info.size)
       throw new Error(`${field}.path: expected a non-empty file`);

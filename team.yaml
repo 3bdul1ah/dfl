@@ -12,7 +12,7 @@ teams:
       - id: prof-yahya-zweiri
         name: Prof. Yahya Zweiri
         image:
-          path: website/assets/images/Prof. yahya zweiri.jpg
+          path: assets/images/Prof. yahya zweiri.jpg
           alt: Prof. Yahya Zweiri
         initials: YZ
         role: Principal Investigator · Khalifa University
@@ -23,7 +23,7 @@ teams:
       - id: prof-merouane-debbah
         name: Prof. Merouane Debbah
         image:
-          path: website/assets/images/Prof. Merouane Debbah.jpg
+          path: assets/images/Prof. Merouane Debbah.jpg
           alt: Prof. Merouane Debbah
         initials: MD
         role: Co-Investigator · Khalifa University
@@ -34,7 +34,7 @@ teams:
       - id: hussain-sajwani
         name: Hussain Sajwani
         image:
-          path: website/assets/images/Hussain Sajwani.jpeg
+          path: assets/images/Hussain Sajwani.jpeg
           alt: Hussain Sajwani
         initials: HS
         role: Researcher · Khalifa University
@@ -44,7 +44,7 @@ teams:
       - id: abdulla-ayyad
         name: Abdulla Ayyad
         image:
-          path: website/assets/images/Abdulla Ayyad.jpeg
+          path: assets/images/Abdulla Ayyad.jpeg
           alt: Abdulla Ayyad
         initials: AA
         role: Researcher · Khalifa University
@@ -54,7 +54,7 @@ teams:
       - id: xiaoqian-huang
         name: Xiaoqian Huang
         image:
-          path: website/assets/images/Xiaoqian Huang.png
+          path: assets/images/Xiaoqian Huang.png
           alt: Xiaoqian Huang
         initials: XH
         role: Researcher · Khalifa University
@@ -64,7 +64,7 @@ teams:
       - id: abdullah-alshateri
         name: Abdullah Alshateri
         image:
-          path: website/assets/images/Abdullah Alshateri.jpeg
+          path: assets/images/Abdullah Alshateri.jpeg
           alt: Abdullah Alshateri
         initials: AA
         role: Researcher · Khalifa University
@@ -77,7 +77,7 @@ teams:
       - id: dr-tarek-taha
         name: Dr. Tarek Taha
         image:
-          path: website/assets/images/Dr. Tarek Taha.jpg
+          path: assets/images/Dr. Tarek Taha.jpg
           alt: Dr. Tarek Taha
         initials: TT
         role: Principal Investigator · Dubai Future Foundation
@@ -88,7 +88,7 @@ teams:
       - id: dr-rajkumar-muthasasmy
         name: Dr. Rajkumar Muthasasmy
         image:
-          path: website/assets/images/Dr. Rajkumar Muthasasmy.jpeg
+          path: assets/images/Dr. Rajkumar Muthasasmy.jpeg
           alt: Dr. Rajkumar Muthasasmy
         initials: RM
         role: Researcher · Dubai Future Foundation
@@ -98,7 +98,7 @@ teams:
       - id: qasim-kapasi
         name: Qasim Kapasi
         image:
-          path: website/assets/images/Qasim Kapasi.jpeg
+          path: assets/images/Qasim Kapasi.jpeg
           alt: Qasim Kapasi
         initials: QK
         role: Project Manager · Dubai Future Foundation

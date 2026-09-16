@@ -1,7 +1,7 @@
 # Research project website
 
 React, Vite and YAML. Edit the YAML files at the repository root, save, and the
-website updates. Code, assets and tooling live in `website/`.
+website updates. Assets live in `assets/`; code and tooling live in `website/`.
 
 ```text
 about.yaml
@@ -13,7 +13,8 @@ projects.yaml
 simulation.yaml
 site.yaml
 team.yaml
-website/            Code, assets, documentation and build tooling
+assets/             Images and videos
+website/            Code, documentation and build tooling
 .github/workflows/  GitHub Pages deployment (must stay here)
 ```
 
@@ -58,7 +59,7 @@ Append an item under `experiments` in `experiments.yaml`:
 - id: mapping
   title: Mapping Experiment
   video:
-    path: website/assets/videos/Mapping_Experiment.MP4
+    path: assets/videos/Mapping_Experiment.MP4
 ```
 
 Use a unique `id` and the actual title and media path. Only `id` and `title`
@@ -83,12 +84,12 @@ list. Fill that list the same way. Empty groups stay hidden. See the
 
 ## Replace an image, video or icon
 
-1. Put the file in `website/assets/images/` or `website/assets/videos/`.
-2. Set its `path` in the relevant YAML file, including the `website/assets/` prefix.
+1. Put the file in `assets/images/` or `assets/videos/`.
+2. Set its `path` in the relevant YAML file, including the `assets/` prefix.
 3. Add descriptive `alt` text for images.
 4. Save and commit both the asset and YAML.
 
-Paths are case-sensitive. The browser tab icon uses `website/assets/images/robot.svg`.
+Paths are case-sensitive. The browser tab icon uses `assets/images/robot.svg`.
 Only referenced assets are included in the build. Videos use Git LFS.
 No `upload.yaml` or GitHub Release is needed.
 

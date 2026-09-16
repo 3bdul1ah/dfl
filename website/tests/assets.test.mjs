@@ -22,7 +22,7 @@ test("replacing bytes updates the URL and removes the obsolete copy", async (t) 
   const { root } = await contentFixture(t);
   const before = await build(root);
   await writeFile(
-    path.join(root, "website/assets/clip with spaces.mp4"),
+    path.join(root, "assets/clip with spaces.mp4"),
     "replacement",
   );
   const after = await build(root);
@@ -37,7 +37,7 @@ test("replacing bytes updates the URL and removes the obsolete copy", async (t) 
 });
 test("missing assets report the section and field", async (t) => {
   const { root, content, save } = await contentFixture(t);
-  content.experiments.experiments[0].video.path = "website/assets/missing.mp4";
+  content.experiments.experiments[0].video.path = "assets/missing.mp4";
   await save();
   await assert.rejects(
     build(root),
@@ -47,24 +47,24 @@ test("missing assets report the section and field", async (t) => {
 test("unresolved LFS pointers never become published media", async (t) => {
   const { root } = await contentFixture(t);
   await writeFile(
-    path.join(root, "website/assets/clip with spaces.mp4"),
+    path.join(root, "assets/clip with spaces.mp4"),
     "version https://git-lfs.github.com/spec/v1\noid sha256:abc\nsize 100\n",
   );
   await assert.rejects(build(root), /Git LFS pointer.*git lfs pull/);
 });
 test("paths and symlinks cannot escape the asset directory", async (t) => {
   const { root, content, save } = await contentFixture(t);
-  await writeFile(path.join(root, "website/private.mp4"), "private");
-  content.simulation.video.path = "website/assets/../private.mp4";
+  await writeFile(path.join(root, "private.mp4"), "private");
+  content.simulation.video.path = "assets/../private.mp4";
   await save();
-  await assert.rejects(build(root), /must stay inside website\/assets/);
+  await assert.rejects(build(root), /must stay inside assets/);
   await symlink(
-    path.join(root, "website/private.mp4"),
-    path.join(root, "website/assets/linked.mp4"),
+    path.join(root, "private.mp4"),
+    path.join(root, "assets/linked.mp4"),
   );
-  content.simulation.video.path = "website/assets/linked.mp4";
+  content.simulation.video.path = "assets/linked.mp4";
   await save();
-  await assert.rejects(build(root), /must stay inside website\/assets/);
+  await assert.rejects(build(root), /must stay inside assets/);
 });
 test("invalid video aspect ratios fail with useful errors", async (t) => {
   const { root, content, save } = await contentFixture(t);

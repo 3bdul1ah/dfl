@@ -19,7 +19,7 @@ export function contentPlugin(initialContent) {
           path.join(repositoryRoot, `${name}.yaml`),
         ),
       );
-      const assetsRoot = path.join(root, "assets") + path.sep;
+      const assetsRoot = path.join(repositoryRoot, "assets") + path.sep;
       server.watcher.add([...contentFiles, assetsRoot]);
       let timer;
       let queue = Promise.resolve();

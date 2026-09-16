@@ -32,13 +32,13 @@ seo:
     A joint initiative by Khalifa University and Dubai Future Foundation to develop intelligent
     robotic systems that automate airport operations using large language models and symbolic planning.
   image:
-    path: website/assets/images/architecture.jpg
+    path: assets/images/architecture.jpg
     alt: System Architecture Diagram
 
 # -------------
 
 favicon:
-  path: website/assets/images/robot.svg
+  path: assets/images/robot.svg
   alt: Robot
 
 # -------------
@@ -89,21 +89,21 @@ hero:
     robotic systems that automate airport operations using large language models and symbolic planning.
   logos:
     - id: ku
-      path: website/assets/images/ku-full.png
+      path: assets/images/ku-full.png
       alt: Khalifa University
       framed: false
 
     # -------------
 
     - id: dff
-      path: website/assets/images/DFL-full.webp
+      path: assets/images/DFL-full.webp
       alt: Dubai Future Foundation
       framed: false
 
     # -------------
 
     - id: aric
-      path: website/assets/images/ARIC logo.png
+      path: assets/images/ARIC logo.png
       alt: ARIC
       framed: true
   actions:
@@ -117,7 +117,7 @@ hero:
       href: "#experiments"
       variant: outline
   badge:
-    path: website/assets/images/Made-in-the-Emirates.jpg
+    path: assets/images/Made-in-the-Emirates.jpg
     alt: Made in the Emirates
 
 # -------------

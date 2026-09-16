@@ -13,7 +13,7 @@ experiments:
       builds and maintains an occupancy map in real time, plans collision-free paths, and localizes itself
       using onboard LiDAR and odometry. This capability is a prerequisite for any airport deployment scenario.
     video:
-      path: website/assets/videos/Navigation_Experiment.MOV
+      path: assets/videos/Navigation_Experiment.MOV
       types:
         - video/quicktime
         - video/mp4
@@ -27,7 +27,7 @@ experiments:
       6-DoF pose estimation. The manipulation pipeline integrates visual perception with optimal grasp planning
       to reliably pick luggage-type objects from unstructured surfaces.
     video:
-      path: website/assets/videos/Grasping_Experiment_1.MP4
+      path: assets/videos/Grasping_Experiment_1.MP4
 
   # -------------
 
@@ -38,7 +38,7 @@ experiments:
       grasp strategies using tactile slip estimation and control to ensure secure object handling throughout
       the manipulation sequence.
     video:
-      path: website/assets/videos/Grasping_Experiment_2.MP4
+      path: assets/videos/Grasping_Experiment_2.MP4
 
   # -------------
 
@@ -49,4 +49,4 @@ experiments:
       conveyor slots, carts). The robot uses visual confirmation and feedback from the Execution Manager
       to validate successful task completion and update the environment state.
     video:
-      path: website/assets/videos/Grasping_Experiment_3.MP4
+      path: assets/videos/Grasping_Experiment_3.MP4
