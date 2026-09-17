@@ -12,7 +12,7 @@ export const projectRoot = fileURLToPath(
 export async function readContent(root = projectRoot) {
   const content = {};
   for (const [name, validate] of Object.entries(schemas)) {
-    const file = `${name}.yaml`;
+    const file = `website_content/${name}.yaml`;
     let source;
     try {
       source = await readFile(path.join(root, file), "utf8");
@@ -24,18 +24,20 @@ export async function readContent(root = projectRoot) {
     content[name] = validate(doc.toJS({ maxAliasCount: 50 }), file);
   }
   if (!content.site.hero.title.length)
-    throw new Error("site.yaml.hero.title: supply at least one title line");
+    throw new Error(
+      "website_content/site.yaml.hero.title: supply at least one title line",
+    );
   const categoryIds = new Set(
     content.experiments.categories.map(({ id }) => id),
   );
   for (const [index, item] of content.experiments.experiments.entries()) {
     if (item.category && !categoryIds.has(item.category))
       throw new Error(
-        `experiments.yaml.experiments[${index}].category: unknown category ${item.category}`,
+        `website_content/experiments.yaml.experiments[${index}].category: unknown category ${item.category}`,
       );
     if (item.category && !item.image && !item.video)
       throw new Error(
-        `experiments.yaml.experiments[${index}]: categorized demonstrations require an image or video as evidence`,
+        `website_content/experiments.yaml.experiments[${index}]: categorized demonstrations require an image or video as evidence`,
       );
   }
   const sectionIds = new Set([

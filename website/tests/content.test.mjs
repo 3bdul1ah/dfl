@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { writeFile } from "node:fs/promises";
+import { writeFile, unlink } from "node:fs/promises";
 import path from "node:path";
 import { schemas } from "../src/lib/content/schemas.mjs";
 import { readContent } from "../src/lib/content/load.mjs";
@@ -76,10 +76,21 @@ test("team groups accept name-only members and have unique stable identities", (
 });
 test("malformed YAML and duplicate YAML mapping keys report the file", async (t) => {
   const { root } = await contentFixture(t);
-  await writeFile(path.join(root, "about.yaml"), "title: [");
-  await assert.rejects(readContent(root), /about.yaml/);
-  await writeFile(path.join(root, "about.yaml"), "title: One\ntitle: Two\n");
+  const file = path.join(root, "website_content", "about.yaml");
+  await writeFile(file, "title: [");
+  await assert.rejects(readContent(root), /website_content\/about.yaml/);
+  await writeFile(file, "title: One\ntitle: Two\n");
   await assert.rejects(readContent(root), /Map keys must be unique/);
+});
+test("content comes from website_content, even when old root files exist", async (t) => {
+  const { root, content } = await contentFixture(t);
+  await writeFile(path.join(root, "about.yaml"), "title: [");
+  assert.equal((await readContent(root)).about.title, content.about.title);
+  await unlink(path.join(root, "website_content", "about.yaml"));
+  await assert.rejects(
+    readContent(root),
+    /website_content\/about.yaml: file is missing/,
+  );
 });
 test("unknown section links are caught before deployment", async (t) => {
   const { root, content, save } = await contentFixture(t);

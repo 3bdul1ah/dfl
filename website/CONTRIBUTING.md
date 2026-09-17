@@ -1,6 +1,6 @@
 # Contributing
 
-Keep content changes in the root YAML files, presentation in
+Keep content changes in `website_content/*.yaml`, presentation in
 `website/src/components/` and `website/src/styles.css`, and build-time parsing in
 `website/src/lib/content/`. Preserve the
 project's factual wording unless a content correction is intentional.

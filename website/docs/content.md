@@ -1,6 +1,7 @@
 # Content guide
 
-The editable YAML files live directly at the repository root. Assets live in
+The editable YAML files live in `website_content/` at the repository root. All
+YAML filenames in this guide refer to that folder. Assets live in
 `assets/`; code lives in `website/`. Run npm commands from `website/`.
 
 All content is parsed and validated at development startup and before a build.

@@ -7,6 +7,7 @@ import { readContent } from "../src/lib/content/load.mjs";
 export async function contentFixture(t) {
   const root = await mkdtemp(path.join(os.tmpdir(), "research-content-"));
   t.after(() => rm(root, { recursive: true, force: true }));
+  await mkdir(path.join(root, "website_content"), { recursive: true });
   await mkdir(path.join(root, "assets"), { recursive: true });
   await writeFile(
     path.join(root, "assets/logo.png"),
@@ -31,7 +32,10 @@ export async function contentFixture(t) {
   replaceMedia(content);
   async function save() {
     for (const [name, value] of Object.entries(content))
-      await writeFile(path.join(root, `${name}.yaml`), stringify(value));
+      await writeFile(
+        path.join(root, "website_content", `${name}.yaml`),
+        stringify(value),
+      );
   }
   await save();
   return { root, content, save };

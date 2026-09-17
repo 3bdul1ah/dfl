@@ -2,8 +2,8 @@
 
 ## Project Structure & Module Organization
 
-This React/Vite website uses root YAML files for editable content: `site.yaml`,
-`team.yaml`, `experiments.yaml`, and related section files. Keep presentation in
+This React/Vite website uses YAML files in `website_content/` for editable
+content: `site.yaml`, `team.yaml`, and related section files. Keep presentation in
 `website/src/components/` and `website/src/styles.css`; content loading and
 validation belong in `website/src/lib/content/`. Build scripts live in
 `website/scripts/`, tests in `website/tests/`, and media in `assets/images/` and
@@ -52,7 +52,7 @@ verification; include screenshots for visual changes.
 
 ## Configuration & Deployment
 
-Leave `site.yaml` URL and repository settings null for automatic detection.
+Leave `website_content/site.yaml` URL and repository settings null for automatic detection.
 Successful default-branch workflow runs deploy GitHub Pages. Never commit
 credentials or generated `website/dist/`, `website/public/assets/`, or
 `website/src/generated/` output. Videos use Git LFS.

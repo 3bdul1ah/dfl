@@ -16,7 +16,7 @@ export function contentPlugin(initialContent) {
       const repositoryRoot = path.dirname(root);
       const contentFiles = new Set(
         Object.keys(schemas).map((name) =>
-          path.join(repositoryRoot, `${name}.yaml`),
+          path.join(repositoryRoot, "website_content", `${name}.yaml`),
         ),
       );
       const assetsRoot = path.join(repositoryRoot, "assets") + path.sep;
